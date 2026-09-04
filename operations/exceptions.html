@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exceptions · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item active" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; Orders &nbsp;/&nbsp; <b>Exceptions</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:16px">
+        <div>
+          <h1 style="font-size:20px">Exception queue</h1>
+          <p class="muted small" style="margin:2px 0 0">Orders across all merchants that need mapping, a retry, or a release decision.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="alert('Retrying all eligible orders. Suspended orders are excluded until explicitly released.')"><span class="icon-sm" data-icon="refresh-cw"></span> Retry all eligible</button>
+      </div>
+
+      <div class="alert danger" style="margin-bottom:16px">
+        <span class="icon" data-icon="alert"></span>
+        <div class="grow">
+          <div class="a-title">18 orders across 7 merchants</div>
+          <div class="a-body">9 need mapping, 7 failed on submission, 2 are held by suspension. Suspended orders never auto-release.</div>
+        </div>
+        <div class="a-actions"><span class="badge red status-pill"><span class="dot"></span>Action needed</span></div>
+      </div>
+
+      <div class="tabs" style="margin-bottom:16px" data-tabs>
+        <button class="tab active" data-tab-target="__all__">All <span class="badge red">18</span></button>
+        <button class="tab" data-tab-target="__map__">Mapping required <span class="badge amber">9</span></button>
+        <button class="tab" data-tab-target="__fail__">Failed <span class="badge red">7</span></button>
+        <button class="tab" data-tab-target="__susp__">Suspended <span class="badge neutral">2</span></button>
+      </div>
+
+      <div class="card">
+        <div class="table-toolbar">
+          <div class="left">
+            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="play"></span> Retry selected</button>
+            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="check"></span> Resolve selected</button>
+          </div>
+          <div class="right">
+            <button class="btn btn-ghost btn-sm"><span class="icon-sm" data-icon="download"></span> Export CSV</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="border:none; box-shadow:none; border-radius:0">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th style="width:34px"><input type="checkbox" data-check-all="#exc-ops-body"></th>
+                <th>Merchant</th>
+                <th>Order</th>
+                <th>Store</th>
+                <th style="min-width:260px">Reason</th>
+                <th>Attempts</th>
+                <th>Last attempt</th>
+                <th class="right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="exc-ops-body">
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><a href="merchant.html" class="link">North Shore Goods Co.</a></td>
+                <td><span style="font-weight:600">#SO-1043</span><div class="sub">$96.40 · 3 items</div></td>
+                <td><span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px">S</span></td>
+                <td>
+                  <div class="exc-reason">
+                    <span class="badge amber"><span class="dot"></span>Mapping</span>
+                    <span style="font-size:12.5px">Wave Liner — Ocean has no mapping for this store.</span>
+                  </div>
+                </td>
+                <td class="sub">—</td>
+                <td class="sub nowrap">09:12 UTC</td>
+                <td><div class="row-actions"><a class="btn btn-soft btn-sm" href="../merchant/mapping.html">Map</a></div></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><a href="merchant.html" class="link">Mountain Ridge Supply</a></td>
+                <td><span style="font-weight:600">#MR-7712</span><div class="sub">€31.90 · 1 item</div></td>
+                <td><span class="store-logo etsy" style="width:20px;height:20px;border-radius:5px;font-size:10px">E</span></td>
+                <td>
+                  <div class="exc-reason">
+                    <span class="badge amber"><span class="dot"></span>Mapping</span>
+                    <span style="font-size:12.5px">SHQ product archived — destination must be re-selected.</span>
+                  </div>
+                </td>
+                <td class="sub">—</td>
+                <td class="sub nowrap">08:41 UTC</td>
+                <td><div class="row-actions"><a class="btn btn-soft btn-sm" href="../merchant/mapping.html">Remap</a></div></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><a href="merchant.html" class="link">Bella Beads Co.</a></td>
+                <td><span style="font-weight:600">#BB-2219</span><div class="sub">$64.50 · 2 items</div></td>
+                <td><span class="store-logo etsy" style="width:20px;height:20px;border-radius:5px;font-size:10px">E</span></td>
+                <td>
+                  <div class="exc-reason">
+                    <span class="badge red"><span class="dot"></span>Failed</span>
+                    <span style="font-size:12.5px">Destination API rejected payload — variant price mismatch.</span>
+                  </div>
+                </td>
+                <td><span class="badge outline">2</span></td>
+                <td class="sub nowrap">09:18 UTC</td>
+                <td><div class="row-actions"><button class="btn btn-soft btn-sm" onclick="alert('Order queued for retry.')"><span class="icon-sm" data-icon="play"></span> Retry</button></div></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><a href="merchant.html" class="link">North Shore Goods Co.</a></td>
+                <td><span style="font-weight:600">#SO-1041</span><div class="sub">$54.80 · 2 items</div></td>
+                <td><span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px">S</span></td>
+                <td>
+                  <div class="exc-reason">
+                    <span class="badge red"><span class="dot"></span>Failed</span>
+                    <span style="font-size:12.5px">Variant mismatch: destination no longer has size “XL”.</span>
+                  </div>
+                </td>
+                <td><span class="badge outline">3</span></td>
+                <td class="sub nowrap">09:41 UTC</td>
+                <td><div class="row-actions"><button class="btn btn-soft btn-sm" onclick="alert('Order queued for retry.')"><span class="icon-sm" data-icon="play"></span> Retry</button></div></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><a href="merchant.html" class="link">Aurora Crafts Co.</a> <span class="badge red" style="margin-left:4px">Suspended</span></td>
+                <td><span style="font-weight:600">#AC-5012</span><div class="sub">$142.00 · 2 items</div></td>
+                <td><span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px">S</span></td>
+                <td>
+                  <div class="exc-reason">
+                    <span class="badge neutral"><span class="dot"></span>Suspended</span>
+                    <span style="font-size:12.5px">Merchant suspended at 22 min ago. Held safely; release explicitly to deliver.</span>
+                  </div>
+                </td>
+                <td class="sub">—</td>
+                <td class="sub nowrap">09:28 UTC</td>
+                <td><div class="row-actions"><button class="btn btn-soft btn-sm btn-disabled" data-modal-open="release-modal">Release</button></div></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td><a href="merchant.html" class="link">Kinfolk Textiles</a> <span class="badge red" style="margin-left:4px">Suspended</span></td>
+                <td><span style="font-weight:600">#KT-0098</span><div class="sub">$33.00 · 1 item</div></td>
+                <td><span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px">S</span></td>
+                <td>
+                  <div class="exc-reason">
+                    <span class="badge neutral"><span class="dot"></span>Suspended</span>
+                    <span style="font-size:12.5px">Merchant suspended 3 days ago. No release requested yet.</span>
+                  </div>
+                </td>
+                <td class="sub">—</td>
+                <td class="sub nowrap">3 d ago</td>
+                <td><div class="row-actions"><button class="btn btn-soft btn-sm" data-modal-open="release-modal">Release</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span>Showing 6 of 18 exceptions · 2 held by suspension</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Release modal -->
+<div class="modal-backdrop" id="release-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title">Release a suspended order</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="alert info" style="margin-bottom:12px">
+        <span class="icon" data-icon="info"></span>
+        <div class="a-body">Only release after the merchant is reactivated. Delivering an order for a suspended merchant is reviewed and explicitly confirmed.</div>
+      </div>
+      <div class="field">
+        <label class="label">Merchant status now</label>
+        <select class="select"><option>Aurora Crafts Co. — Suspended</option><option>Reactivated — allow delivery</option></select>
+      </div>
+      <div class="field mt-4">
+        <label class="label" for="release-note">Note (written to audit log)</label>
+        <textarea class="textarea" id="release-note" placeholder="e.g. Billing resolved — releasing held orders"></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" onclick="alert('Order queued for delivery after reactivation.')">Reactivate + release</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

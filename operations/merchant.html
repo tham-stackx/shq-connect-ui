@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merchant · North Shore Goods Co. — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item active" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; Merchants &nbsp;/&nbsp; <b>North Shore Goods Co.</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:16px">
+        <div class="flex" style="gap:14px">
+          <button class="btn btn-ghost btn-icon" onclick="location.href='merchants.html'"><span class="icon" data-icon="arrow_left"></span></button>
+          <div class="flex" style="gap:12px">
+            <span class="avatar soft" style="width:42px;height:42px;font-size:15px">NS</span>
+            <div>
+              <h1 style="font-size:20px" class="flex" style="gap:10px">North Shore Goods Co. <span class="badge green"><span class="dot"></span>Active</span></h1>
+              <p class="muted small" style="margin:2px 0 0">Merchant ID <span class="mono tiny">mch_91w7ql</span> · onboarded 12 May 2026</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex">
+          <a class="btn btn-outline btn-sm" href="../merchant/index.html"><span class="icon-sm" data-icon="external"></span> View merchant workspace</a>
+          <button class="btn btn-danger btn-sm" data-modal-open="suspend-modal"><span class="icon-sm" data-icon="ban"></span> Suspend</button>
+        </div>
+      </div>
+
+      <div class="tabs" style="margin-bottom:16px" data-tabs>
+        <button class="tab active" data-tab-target="overview">Overview</button>
+        <button class="tab" data-tab-target="stores">Stores <span class="badge neutral">3</span></button>
+        <button class="tab" data-tab-target="mappings">Mappings</button>
+        <button class="tab" data-tab-target="orders">Orders <span class="badge neutral">34</span></button>
+        <button class="tab" data-tab-target="exceptions">Exceptions <span class="badge red">5</span></button>
+        <button class="tab" data-tab-target="audit">Audit</button>
+      </div>
+
+      <!-- Overview -->
+      <div data-tab-panel="overview">
+        <div class="grid-4" style="margin-bottom:18px">
+          <div class="card card-metric"><div class="k-label">Connected stores</div><div class="k-value">3</div><div class="k-sub">all channels healthy</div></div>
+          <div class="card card-metric"><div class="k-label">Products mapped</div><div class="k-value">114</div><div class="k-sub">89% coverage</div></div>
+          <div class="card card-metric"><div class="k-label">Orders · 28 days</div><div class="k-value">34</div><div class="k-sub">29 submitted</div></div>
+          <div class="card card-metric"><div class="k-label">Open exceptions</div><div class="k-value" style="color:var(--warning-strong)">5</div><div class="k-sub">2 mapping · 3 failed</div></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;  ;" class="md">
+          <div class="card card-body">
+            <div class="card-title" style="font-size:14px; margin-bottom:12px">Profile</div>
+            <dl class="kv">
+              <dt>Merchant</dt><dd>North Shore Goods Co.</dd>
+              <dt>Merchant ID</dt><dd class="mono tiny">mch_91w7ql</dd>
+              <dt>Status</dt><dd><span class="badge green"><span class="dot"></span>Active</span></dd>
+              <dt>Plan</dt><dd>Managed · central SHQ store</dd>
+              <dt>Admin</dt><dd>Alex Lake · alex@northshore.co</dd>
+              <dt>Timezone</dt><dd>Asia/Saigon (GMT+7)</dd>
+              <dt>Created</dt><dd>12 May 2026</dd>
+              <dt>Retention</dt><dd>Order payloads kept per policy</dd>
+            </dl>
+          </div>
+          <div class="card">
+            <div class="card-header row">
+              <div><div class="card-title" style="font-size:14px">Recent activity</div><div class="card-desc">Across this merchant</div></div>
+            </div>
+            <div class="condensed-list" style="padding: 6px 20px 14px">
+              <div class="cl-row">
+                <span class="cl-avatar"><span class="icon-sm" data-icon="alert"></span></span>
+                <div class="cl-main"><div class="nm">Order #SO-1043 needs mapping</div><div class="sb">Wave Liner — Ocean unmapped</div></div>
+                <span class="tiny muted nowrap">9 min</span>
+              </div>
+              <div class="cl-row">
+                <span class="cl-avatar"><span class="icon-sm" data-icon="box"></span></span>
+                <div class="cl-main"><div class="nm">Order #SO-1042 submitted</div><div class="sb">Created in SHQ store (#4420)</div></div>
+                <span class="tiny muted nowrap">32 min</span>
+              </div>
+              <div class="cl-row">
+                <span class="cl-avatar"><span class="icon-sm" data-icon="refresh"></span></span>
+                <div class="cl-main"><div class="nm">Etsy catalog sync</div><div class="sb">37 products imported</div></div>
+                <span class="tiny muted nowrap">26 min</span>
+              </div>
+              <div class="cl-row">
+                <span class="cl-avatar"><span class="icon-sm" data-icon="alert"></span></span>
+                <div class="cl-main"><div class="nm">Order #SO-1041 failed</div><div class="sb">Variant mismatch on submit</div></div>
+                <span class="tiny muted nowrap">1 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stores -->
+      <div data-tab-panel="stores" hidden>
+        <div class="card">
+          <div class="card-header row">
+            <div><div class="card-title">Connected stores</div><div class="card-desc">Source connections and their last sync</div></div>
+            <a class="btn btn-outline btn-sm" href="../merchant/stores.html"><span class="icon-sm" data-icon="store"></span> Open in merchant view</a>
+          </div>
+          <div class="table-wrap" style="border:none; box-shadow:none">
+            <table class="tbl">
+              <thead><tr><th>Store</th><th>Channel</th><th>Products</th><th>Orders · 28d</th><th>Webhook</th><th>Last sync</th><th>Health</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="cell-title"><span class="store-logo shopify" style="width:26px;height:26px;border-radius:6px;font-size:11px">S</span><span style="font-weight:600">North Shore Store</span></div></td>
+                  <td>Shopify</td><td>76</td><td>21</td><td><span class="badge green">Active</span></td>
+                  <td class="sub nowrap">22 min ago</td><td><span class="badge green"><span class="dot"></span>Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-title"><span class="store-logo etsy" style="width:26px;height:26px;border-radius:6px;font-size:11px">E</span><span style="font-weight:600">NorthShoreSupplies</span></div></td>
+                  <td>Etsy</td><td>37</td><td>8</td><td><span class="badge green">Active</span></td>
+                  <td class="sub nowrap">26 min ago</td><td><span class="badge green"><span class="dot"></span>Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-title"><span class="store-logo woo" style="width:26px;height:26px;border-radius:6px;font-size:11px">W</span><span style="font-weight:600">North Shore Outlet</span></div></td>
+                  <td>WooCommerce</td><td>15</td><td>5</td><td><span class="badge amber"><span class="dot"></span>Paused</span></td>
+                  <td class="sub nowrap">52 min ago</td><td><span class="badge amber"><span class="dot"></span>Degraded</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <a class="link muted-link small" href="connections.html">All connection health</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mappings -->
+      <div data-tab-panel="mappings" hidden>
+        <div class="card card-body" style="margin-bottom:16px; display:flex; align-items:center; gap:16px; flex-wrap:wrap">
+          <div class="grow" style="min-width:220px">
+            <div class="flex-between" style="margin-bottom:6px">
+              <span class="small semibold">Mapping coverage</span>
+              <span class="small muted">114 of 128 products</span>
+            </div>
+            <div class="progress"><i style="width:89%"></i></div>
+          </div>
+          <span class="badge amber"><span class="dot"></span>14 unmapped</span>
+        </div>
+        <div class="card">
+          <div class="card-header row">
+            <div><div class="card-title">Products needing mapping</div><div class="card-desc">Blocks individual line items and orders</div></div>
+            <a class="btn btn-primary btn-sm" href="../merchant/mapping.html"><span class="icon-sm" data-icon="branch"></span> Open mapping</a>
+          </div>
+          <div class="table-wrap" style="border:none; box-shadow:none">
+            <table class="tbl">
+              <thead><tr><th>Source product</th><th>Channel</th><th>SKU</th><th>Variants</th><th>Affects</th></tr></thead>
+              <tbody>
+                <tr><td><span style="font-weight:600">Harbor Hoodie — Charcoal</span></td><td><span class="badge outline">Etsy</span></td><td class="mono tiny muted">HB-220-CHR</td><td>5</td><td><span class="badge amber">2 orders blocked</span></td></tr>
+                <tr><td><span style="font-weight:600">Wave Liner — Ocean</span></td><td><span class="badge outline">Shopify</span></td><td class="mono tiny muted">WL-050-OCE</td><td>3</td><td><span class="badge amber">1 order blocked</span></td></tr>
+                <tr><td><span style="font-weight:600">Portland Tote — Natural</span></td><td><span class="badge outline">Shopify</span></td><td class="mono tiny muted">PT-330-NAT</td><td>1</td><td><span class="badge neutral">0</span></td></tr>
+                <tr><td><span style="font-weight:600">Cascade Jar — Clear</span></td><td><span class="badge outline">WooCommerce</span></td><td class="mono tiny muted">CJ-220-CLR</td><td>2</td><td><span class="badge neutral">0</span></td></tr>
+                <tr><td><span style="font-weight:600">Dune Cap — Sand</span></td><td><span class="badge outline">WooCommerce</span></td><td class="mono tiny muted">DN-510-SND</td><td>4</td><td><span class="badge neutral">0</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div data-tab-panel="orders" hidden>
+        <div class="card">
+          <div class="table-toolbar">
+            <div class="left">
+              <div class="search"><span class="icon" data-icon="search"></span><input class="input" type="text" placeholder="Search…" style="height:32px"></div>
+              <select class="select" style="width:150px"><option>Any status</option><option>Submitted</option><option>Failed</option><option>Mapping required</option></select>
+            </div>
+          </div>
+          <div class="table-wrap" style="border:none; box-shadow:none; border-radius:0">
+            <table class="tbl">
+              <thead><tr><th>Order</th><th>Store</th><th>Value</th><th>Status</th><th class="right">Received</th></tr></thead>
+              <tbody>
+                <tr class="clickable" onclick="location.href='../merchant/order.html'">
+                  <td><span style="font-weight:600">#SO-1043</span></td>
+                  <td><span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px">S</span></td>
+                  <td class="amount">$96.40</td>
+                  <td><span class="badge amber status-pill"><span class="dot"></span>Mapping</span></td>
+                  <td class="sub nowrap">8 min ago</td>
+                </tr>
+                <tr class="clickable" onclick="location.href='../merchant/order.html'">
+                  <td><span style="font-weight:600">#SO-1042</span></td>
+                  <td><span class="store-logo etsy" style="width:20px;height:20px;border-radius:5px;font-size:10px">E</span></td>
+                  <td class="amount">€24.64</td>
+                  <td><span class="badge blue status-pill"><span class="dot"></span>Submitted</span></td>
+                  <td class="sub nowrap">32 min ago</td>
+                </tr>
+                <tr class="clickable" onclick="location.href='../merchant/order.html'">
+                  <td><span style="font-weight:600">#SO-1041</span></td>
+                  <td><span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px">S</span></td>
+                  <td class="amount">$54.80</td>
+                  <td><span class="badge red status-pill"><span class="dot"></span>Failed</span></td>
+                  <td class="sub nowrap">1 h ago</td>
+                </tr>
+                <tr class="clickable" onclick="location.href='../merchant/order.html'">
+                  <td><span style="font-weight:600">#SO-1040</span></td>
+                  <td><span class="store-logo woo" style="width:20px;height:20px;border-radius:5px;font-size:10px">W</span></td>
+                  <td class="amount">$133.00</td>
+                  <td><span class="badge blue status-pill"><span class="dot"></span>Submitted</span></td>
+                  <td class="sub nowrap">2 h ago</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-foot"><span>Showing 4 of 34</span><a class="link muted-link small" href="orders.html">All orders</a></div>
+        </div>
+      </div>
+
+      <!-- Exceptions -->
+      <div data-tab-panel="exceptions" hidden>
+        <div class="card">
+          <div class="table-wrap">
+            <table class="tbl">
+              <thead><tr><th>Order</th><th>Reason</th><th>Attempts</th><th>Last attempt</th><th class="right">Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span style="font-weight:600">#SO-1043</span></td>
+                  <td><div class="exc-reason"><span class="badge amber"><span class="dot"></span>Mapping</span><span style="font-size:12.5px">Wave Liner — Ocean unmapped</span></div></td>
+                  <td class="sub">—</td><td class="sub">30 Aug · 09:12 UTC</td>
+                  <td><div class="row-actions"><a class="btn btn-soft btn-sm" href="../merchant/mapping.html">Map</a></div></td>
+                </tr>
+                <tr>
+                  <td><span style="font-weight:600">#SO-1041</span></td>
+                  <td><div class="exc-reason"><span class="badge red"><span class="dot"></span>Failed</span><span style="font-size:12.5px">Variant mismatch on destination</span></div></td>
+                  <td class="sub">3</td><td class="sub">30 Aug · 09:41 UTC</td>
+                  <td><div class="row-actions"><button class="btn btn-soft btn-sm" onclick="alert('Order queued for retry.')">Retry</button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <a class="btn btn-outline btn-sm mt-4" href="exceptions.html">Open full exception queue</a>
+      </div>
+
+      <!-- Audit -->
+      <div data-tab-panel="audit" hidden>
+        <div class="card card-body">
+          <div class="card-title" style="margin-bottom:14px">Lifecycle history</div>
+          <div class="timeline">
+            <div class="tl-item done"><span class="tl-dot"></span><div class="tl-title">Merchant created</div><div class="tl-time">12 May 2026 · by ops@shq.example</div><div class="tl-desc">Invitation sent to alex@northshore.co</div></div>
+            <div class="tl-item done"><span class="tl-dot"></span><div class="tl-title">First store connected</div><div class="tl-time">14 May 2026 · Shopify OAuth</div></div>
+            <div class="tl-item done"><span class="tl-dot"></span><div class="tl-title">Profile updated</div><div class="tl-time">02 Jun 2026 · by merchant</div></div>
+            <div class="tl-item done"><span class="tl-dot"></span><div class="tl-title">Etsy store connected</div><div class="tl-time">18 Jul 2026 · OAuth</div></div>
+            <div class="tl-item done"><span class="tl-dot"></span><div class="tl-title">WooCommerce store connected</div><div class="tl-time">03 Aug 2026 · REST credentials</div></div>
+          </div>
+        </div>
+        <a class="btn btn-outline btn-sm mt-4" href="audit.html">View full audit trail</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Suspend modal -->
+<div class="modal-backdrop" id="suspend-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title">Suspend North Shore Goods Co.</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="alert danger" style="margin-bottom:12px">
+        <span class="icon" data-icon="ban"></span>
+        <div class="a-body">While suspended, the connector keeps authenticating and storing paid orders with status <b>merchant_suspended</b>, but nothing is delivered to the SHQ store.</div>
+      </div>
+      <p class="small muted">Reactivating does not auto-release held orders. You review and retry them explicitly. This action is written to the audit log.</p>
+      <div class="field mt-4">
+        <label class="label" for="suspend-reason">Reason (required for audit)</label>
+        <textarea class="textarea" id="suspend-reason" placeholder="e.g. Disputed billing — resolving with merchant"></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-danger" onclick="alert('Merchant suspended. New orders will be held as merchant_suspended.')">Suspend merchant</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

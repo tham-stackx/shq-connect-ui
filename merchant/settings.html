@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings · Merchant — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+.settings-grid { display: grid; grid-template-columns: 220px 1fr; gap: 18px; align-items: start; }
+@media (max-width: 860px) { .settings-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (merchant) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">Merchant workspace</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Workspace</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="stores.html"><span class="icon" data-icon="store"></span> Stores <span class="count">3</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Catalog</div>
+        <a class="nav-item" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog <span class="count">128</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Orders</div>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">34</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">5</span></a>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Workspace</div>
+        <a class="nav-item" href="analytics.html"><span class="icon" data-icon="chart"></span> Analytics</a>
+        <a class="nav-item active" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar">AL</span>
+      <div class="who">
+        <div class="nm">Alex Lake</div>
+        <div class="rl">alex@northshore.co</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="user"></span> Profile</a>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">Merchant &nbsp;/&nbsp; <b>Settings</b></div>
+      <div class="spacer"></div>
+
+      <div class="dropdown">
+        <button class="btn btn-outline" data-dropdown>
+          <span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px;border:none">S</span>
+          <span style="font-weight:600">North Shore Store</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:260px">
+          <div class="menu-title">Connected stores</div>
+          <button class="menu-item">
+            <span class="store-logo shopify" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">S</span>
+            <span class="grow">
+              <div style="font-weight:600">North Shore Store</div>
+              <div class="tiny muted">shop.northshore.co</div>
+            </span>
+            <span class="icon" style="color:var(--success-strong)" data-icon="check"></span>
+          </button>
+          <button class="menu-item">
+            <span class="store-logo etsy" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">E</span>
+            <span class="grow">
+              <div style="font-weight:600">NorthShoreSupplies</div>
+              <div class="tiny muted">etsy.com/shop/NorthShoreSupplies</div>
+            </span>
+          </button>
+          <button class="menu-item">
+            <span class="store-logo woo" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">W</span>
+            <span class="grow">
+              <div style="font-weight:600">North Shore Outlet</div>
+              <div class="tiny muted">outlet.northshore.co</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item" onclick="location.href='stores.html'"><span class="icon" data-icon="plus"></span> Connect a store</button>
+        </div>
+      </div>
+
+      <div class="search" style="width:220px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search orders, products…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Notifications</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 orders need mapping</div>
+              <div class="tiny muted">North Shore Store · 8 min ago</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='catalog.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="refresh"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Catalog sync completed</div>
+              <div class="tiny muted">Etsy · 26 min ago</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='orders.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="box"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">6 orders submitted</div>
+              <div class="tiny muted">Central SHQ store · 1 h ago</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='settings.html'">Notification preferences</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar" style="width:30px;height:30px">AL</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">Alex Lake</div>
+            <div class="tiny muted">alex@northshore.co</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="user"></span> Profile</a>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+          <a class="menu-item" href="../operations/index.html"><span class="icon" data-icon="shield"></span> SHQ Operations</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <h1 style="font-size:20px; margin-bottom:18px">Settings</h1>
+
+      <div class="settings-grid">
+        <div class="tabs" style="flex-direction:column; border:none" data-tabs>
+          <button class="tab active" data-tab-target="profile" style="border:none; border-radius:var(--radius-sm); padding:9px 12px; text-align:left">Profile</button>
+          <button class="tab" data-tab-target="stores" style="border:none; border-radius:var(--radius-sm); padding:9px 12px; text-align:left">Stores</button>
+          <button class="tab" data-tab-target="shq" style="border:none; border-radius:var(--radius-sm); padding:9px 12px; text-align:left">SHQ store</button>
+          <button class="tab" data-tab-target="notifications" style="border:none; border-radius:var(--radius-sm); padding:9px 12px; text-align:left">Notifications</button>
+          <button class="tab" data-tab-target="security" style="border:none; border-radius:var(--radius-sm); padding:9px 12px; text-align:left">Security</button>
+        </div>
+
+        <div class="stack">
+          <!-- Profile -->
+          <div data-tab-panel="profile">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Profile</div><div class="card-desc">Your personal details and workspace identity.</div></div>
+              <div class="card-body">
+                <div class="field-row">
+                  <div class="field">
+                    <label class="label">Full name</label>
+                    <input class="input" value="Alex Lake">
+                  </div>
+                  <div class="field">
+                    <label class="label">Email address</label>
+                    <input class="input" type="email" value="alex@northshore.co">
+                  </div>
+                  <div class="field">
+                    <label class="label">Timezone</label>
+                    <select class="select"><option>Asia/Saigon (GMT+7)</option><option>Europe/London</option><option>US/Eastern</option></select>
+                  </div>
+                  <div class="field">
+                    <label class="label">Language</label>
+                    <select class="select"><option>English</option></select>
+                  </div>
+                </div>
+                <div class="flex mt-4" style="justify-content:flex-end">
+                  <button class="btn btn-primary" onclick="alert('Profile saved.')">Save changes</button>
+                </div>
+              </div>
+            </div>
+            <div class="card card-body mt-4">
+              <div class="card-title" style="font-size:14px; margin-bottom:12px">Workspace</div>
+              <dl class="kv">
+                <dt>Merchant</dt><dd>North Shore Goods Co.</dd>
+                <dt>Merchant ID</dt><dd class="mono tiny">mch_91w7ql</dd>
+                <dt>Workspace created</dt><dd>12 May 2026</dd>
+                <dt>Plan</dt><dd><span class="badge blue">Active</span> · managed by SHQ</dd>
+              </dl>
+            </div>
+          </div>
+
+          <!-- Stores -->
+          <div data-tab-panel="stores" hidden>
+            <div class="card">
+              <div class="card-header row">
+                <div><div class="card-title">Store connections</div><div class="card-desc">Connection, webhook and sync preferences per store.</div></div>
+                <button class="btn btn-outline btn-sm" onclick="location.href='stores.html'"><span class="icon-sm" data-icon="store"></span> Manage stores</button>
+              </div>
+              <div class="card-body stack">
+                <div class="card" style="border-radius:var(--radius-md)">
+                  <div class="card-body" style="padding:14px 16px">
+                    <div class="flex-between" style="gap:10px">
+                      <div class="flex" style="gap:10px">
+                        <span class="store-logo shopify" style="width:32px;height:32px;border-radius:8px;font-size:12px">S</span>
+                        <div>
+                          <div style="font-weight:600; font-size:13px">North Shore Store</div>
+                          <div class="tiny muted">shop.northshore.co · Shopify</div>
+                        </div>
+                      </div>
+                      <span class="badge green"><span class="dot"></span>Connected</span>
+                    </div>
+                    <div class="field-row" style="margin-top:14px">
+                      <div class="field">
+                        <label class="label">Ingest paid orders</label>
+                        <label class="switch-label"><span class="switch"><input type="checkbox" checked><span class="track"></span></span> Webhook active</label>
+                      </div>
+                      <div class="field">
+                        <label class="label">Catalog sync</label>
+                        <select class="select"><option>Every 30 minutes</option><option>Every hour</option><option>On demand</option></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card" style="border-radius:var(--radius-md)">
+                  <div class="card-body" style="padding:14px 16px">
+                    <div class="flex-between" style="gap:10px">
+                      <div class="flex" style="gap:10px">
+                        <span class="store-logo etsy" style="width:32px;height:32px;border-radius:8px;font-size:12px">E</span>
+                        <div>
+                          <div style="font-weight:600; font-size:13px">NorthShoreSupplies</div>
+                          <div class="tiny muted">etsy.com/shop/NorthShoreSupplies</div>
+                        </div>
+                      </div>
+                      <span class="badge green"><span class="dot"></span>Connected</span>
+                    </div>
+                    <div class="field-row" style="margin-top:14px">
+                      <div class="field">
+                        <label class="label">Ingest paid orders</label>
+                        <label class="switch-label"><span class="switch"><input type="checkbox" checked><span class="track"></span></span> Webhook active</label>
+                      </div>
+                      <div class="field">
+                        <label class="label">Catalog sync</label>
+                        <select class="select"><option>Every 30 minutes</option><option>Every hour</option><option>On demand</option></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card" style="border-radius:var(--radius-md)">
+                  <div class="card-body" style="padding:14px 16px">
+                    <div class="flex-between" style="gap:10px">
+                      <div class="flex" style="gap:10px">
+                        <span class="store-logo woo" style="width:32px;height:32px;border-radius:8px;font-size:12px">W</span>
+                        <div>
+                          <div style="font-weight:600; font-size:13px">North Shore Outlet</div>
+                          <div class="tiny muted">outlet.northshore.co · WooCommerce</div>
+                        </div>
+                      </div>
+                      <span class="badge amber"><span class="dot"></span>Webhooks paused</span>
+                    </div>
+                    <div class="field-row" style="margin-top:14px">
+                      <div class="field">
+                        <label class="label">Ingest paid orders</label>
+                        <label class="switch-label"><span class="switch"><input type="checkbox"><span class="track"></span></span> Webhook paused</label>
+                      </div>
+                      <div class="field">
+                        <label class="label">Catalog sync</label>
+                        <select class="select"><option>Every 30 minutes</option><option>Every hour</option><option>On demand</option></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                Pausing a webhook stops new orders from being ingested. Orders already stored keep their status and remain retryable.
+              </div>
+            </div>
+          </div>
+
+          <!-- SHQ store -->
+          <div data-tab-panel="shq" hidden>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Central SHQ Shopify store</div><div class="card-desc">Where valid orders are created after mapping. Managed by SHQ.</div></div>
+              <div class="card-body stack">
+                <dl class="kv">
+                  <dt>Destination store</dt><dd>SHQ Central Store · <span class="mono tiny">shq-central.myshopify.com</span></dd>
+                  <dt>Status</dt><dd><span class="badge green"><span class="dot"></span>Healthy</span></dd>
+                  <dt>Created orders</dt><dd>29 in the last 28 days</dd>
+                  <dt>Dedup protocol</dt><dd class="small">Client request id + idempotency key — retries never create duplicates.</dd>
+                </dl>
+                <label class="switch-label"><span class="switch"><input type="checkbox" checked><span class="track"></span></span> Allow creation of orders in the SHQ store</label>
+                <div class="card-footer" style="border:1px solid var(--border); background:var(--secondary); border-radius:var(--radius-md)">
+                  This switch is informational in the prototype. In production, destination submission is controlled by SHQ operations.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div data-tab-panel="notifications" hidden>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Email and in-app notifications</div><div class="card-desc">Delivered to alex@northshore.co.</div></div>
+              <div class="card-body" style="padding:8px 20px">
+                <div class="cl-row">
+                  <span class="cl-avatar"><span class="icon-sm" data-icon="alert"></span></span>
+                  <div class="cl-main"><div class="nm">Exception created</div><div class="sb">An order needs mapping or failed to submit</div></div>
+                  <span class="badge amber">Email + in-app</span>
+                </div>
+                <div class="cl-row">
+                  <span class="cl-avatar"><span class="icon-sm" data-icon="box"></span></span>
+                  <div class="cl-main"><div class="nm">Order submitted</div><div class="sb">One-line confirmation when an order reaches the SHQ store</div></div>
+                  <span class="badge neutral">In-app</span>
+                </div>
+                <div class="cl-row">
+                  <span class="cl-avatar"><span class="icon-sm" data-icon="refresh"></span></span>
+                  <div class="cl-main"><div class="nm">Sync failures</div><div class="sb">A connected store could not sync its catalog</div></div>
+                  <span class="badge amber">Email + in-app</span>
+                </div>
+                <div class="cl-row" style="border-bottom:none">
+                  <span class="cl-avatar"><span class="icon-sm" data-icon="chart"></span></span>
+                  <div class="cl-main"><div class="nm">Weekly digest</div><div class="sb">A short summary every Monday</div></div>
+                  <label class="switch"><input type="checkbox" checked><span class="track"></span></label>
+                </div>
+              </div>
+              <div class="card-footer" style="justify-content:flex-end">
+                <button class="btn btn-primary btn-sm" onclick="alert('Notification preferences saved.')">Save preferences</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div data-tab-panel="security" hidden>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Change password</div></div>
+              <div class="card-body">
+                <div class="field stack">
+                  <div class="field"><label class="label">Current password</label><input class="input" type="password" placeholder="••••••••"></div>
+                  <div class="field"><label class="label">New password</label><input class="input" type="password" placeholder="••••••••"></div>
+                  <div class="field"><label class="label">Confirm new password</label><input class="input" type="password" placeholder="••••••••"></div>
+                </div>
+                <div class="flex mt-4" style="justify-content:flex-end">
+                  <button class="btn btn-primary" onclick="alert('Password updated.')">Update password</button>
+                </div>
+              </div>
+            </div>
+            <div class="card card-body mt-4">
+              <div class="flex-between">
+                <div>
+                  <div class="card-title" style="font-size:14px">Two-factor authentication</div>
+                  <div class="card-desc">Add a second factor to every sign-in.</div>
+                </div>
+                <span class="badge neutral">Coming soon</span>
+              </div>
+            </div>
+            <div class="card card-body mt-4">
+              <div class="flex-between" style="align-items:flex-start">
+                <div>
+                  <div class="card-title" style="font-size:14px">Active sessions</div>
+                  <div class="card-desc" style="margin-top:6px">
+                    <span>Chrome · macOS · IP 112.197.55.2</span> <span class="badge green" style="margin-left:6px">This device</span><br>
+                    <span class="muted small">Safari · iPhone · 12 min ago</span>
+                  </div>
+                </div>
+                <button class="btn btn-outline btn-sm">Revoke others</button>
+              </div>
+            </div>
+            <div class="card mt-4" style="border-color:color-mix(in srgb, var(--danger) 30%, transparent)">
+              <div class="card-body" style="display:flex; gap:14px; align-items:flex-start">
+                <span class="icon" style="color:var(--danger-strong)" data-icon="alert"></span>
+                <div class="grow">
+                  <div style="font-weight:650; font-size:14px">Close or suspend your workspace</div>
+                  <p class="muted small" style="margin:4px 0 2px">Suspension is handled by SHQ operations. While suspended, new orders are stored and kept safe but are not delivered until an administrator reviews and explicitly releases them.</p>
+                </div>
+                <button class="btn btn-soft-danger btn-sm" onclick="alert('Contacting SHQ for workspace administration (demo).')">Contact SHQ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

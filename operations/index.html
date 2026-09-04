@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overview · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+.ops-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 18px; align-items: start; }
+@media (max-width: 980px) { .ops-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item active" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; <b>Overview</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px">
+        <div>
+          <h1 style="font-size:20px">Good morning, SHQ Ops</h1>
+          <p class="muted small" style="margin:2px 0 0">Cross-merchant performance and anything that needs intervention.</p>
+        </div>
+        <div class="flex">
+          <a class="btn btn-outline btn-sm" href="reconciliation.html"><span class="icon-sm" data-icon="scale"></span> Reconciliation</a>
+          <a class="btn btn-primary btn-sm" href="merchants.html"><span class="icon-sm" data-icon="plus"></span> Onboard merchant</a>
+        </div>
+      </div>
+
+      <div class="alert danger" style="margin-bottom:18px">
+        <span class="icon" data-icon="alert"></span>
+        <div class="grow">
+          <div class="a-title">18 orders need intervention across 7 merchants</div>
+          <div class="a-body">9 need mapping, 7 failed on submission, 2 are held while their merchants are suspended. No order is lost.</div>
+        </div>
+        <div class="a-actions">
+          <a class="btn btn-sm" href="exceptions.html" style="text-decoration:underline">Open exception queue</a>
+        </div>
+      </div>
+
+      <section class="grid-4" style="margin-bottom:18px">
+        <div class="card card-metric">
+          <div class="k-label"><span class="icon-sm" data-icon="users"></span> Active merchants</div>
+          <div class="k-value">12</div>
+          <div class="k-sub">+2 onboarded this month</div>
+        </div>
+        <div class="card card-metric">
+          <div class="k-label"><span class="icon-sm" data-icon="store"></span> Connected stores</div>
+          <div class="k-value">29</div>
+          <div class="k-sub">20 Shopify · 6 Etsy · 3 WooCommerce</div>
+        </div>
+        <div class="card card-metric">
+          <div class="k-label"><span class="icon-sm" data-icon="cart"></span> Paid orders · 28 days</div>
+          <div class="k-value">342</div>
+          <div class="k-sub"><span class="k-trend-up">+9%</span> vs previous period</div>
+        </div>
+        <div class="card card-metric">
+          <div class="k-label"><span class="icon-sm" data-icon="scale"></span> Delivery rate</div>
+          <div class="k-value">94.7%</div>
+          <div class="k-sub">18 open exceptions · check RPO per merchant</div>
+        </div>
+      </section>
+
+      <div class="ops-grid">
+        <div class="stack">
+          <div class="card">
+            <div class="card-header row">
+              <div>
+                <div class="card-title">Attention by merchant</div>
+                <div class="card-desc">Merchants with the most open exceptions right now</div>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="exceptions.html">Open queue <span class="icon-sm" data-icon="chevron_right"></span></a>
+            </div>
+            <div class="table-wrap" style="border:none; box-shadow:none">
+              <table class="tbl">
+                <thead><tr><th>Merchant</th><th>Open</th><th>Breakdown</th><th>Last exception</th></tr></thead>
+                <tbody>
+                  <tr class="clickable" onclick="location.href='merchant.html'">
+                    <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">NS</span><div><div style="font-weight:600">North Shore Goods Co.</div><div class="sub">3 stores</div></div></div></td>
+                    <td><span class="badge red">5</span></td>
+                    <td><span class="tiny muted">2 map · 3 fail</span></td>
+                    <td class="sub nowrap">9 min ago</td>
+                  </tr>
+                  <tr class="clickable" onclick="location.href='merchant.html'">
+                    <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">AC</span><div><div style="font-weight:600">Aurora Crafts Co.</div><div class="sub">4 stores</div></div></div></td>
+                    <td><span class="badge red">4</span></td>
+                    <td><span class="tiny muted">1 map · 1 fail · 2 suspended</span></td>
+                    <td class="sub nowrap">22 min ago</td>
+                  </tr>
+                  <tr class="clickable" onclick="location.href='merchant.html'">
+                    <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">BB</span><div><div style="font-weight:600">Bella Beads Co.</div><div class="sub">2 stores</div></div></div></td>
+                    <td><span class="badge red">3</span></td>
+                    <td><span class="tiny muted">3 fail</span></td>
+                    <td class="sub nowrap">38 min ago</td>
+                  </tr>
+                  <tr class="clickable" onclick="location.href='merchant.html'">
+                    <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">MR</span><div><div style="font-weight:600">Mountain Ridge Supply</div><div class="sub">3 stores</div></div></div></td>
+                    <td><span class="badge red">2</span></td>
+                    <td><span class="tiny muted">2 map</span></td>
+                    <td class="sub nowrap">1 h ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header row">
+              <div>
+                <div class="card-title">Orders flowing</div>
+                <div class="card-desc">Received vs submitted · last 7 days</div>
+              </div>
+              <span class="badge green"><span class="dot"></span>On track</span>
+            </div>
+            <div class="card-body">
+              <div class="bars" style="height:150px">
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:70%"></div>
+                <div class="bar" style="height:62%"></div>
+                <div class="bar" style="height:88%"></div>
+                <div class="bar ghost" style="height:80%"></div>
+                <div class="bar" style="height:95%"></div>
+                <div class="bar" style="height:85%"></div>
+              </div>
+              <div class="bar-axis"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="card card-body">
+            <div class="card-title" style="margin-bottom:6px">Connection health</div>
+            <div class="card-desc" style="margin-bottom:12px">29 connected stores</div>
+            <div class="hbar-track" style="height:10px; margin-bottom:6px"><div class="hbar-fill green" style="width:91%"></div></div>
+            <div class="hbar-row"><span class="nm" style="width:130px">Healthy</span><div class="hbar-track"><div class="hbar-fill green" style="width:78%"></div></div><span class="pct">26</span></div>
+            <div class="hbar-row"><span class="nm" style="width:130px">Delayed</span><div class="hbar-track"><div class="hbar-fill amber" style="width:9%"></div></div><span class="pct">2</span></div>
+            <div class="hbar-row" style="border-bottom:none"><span class="nm" style="width:130px">Paused</span><div class="hbar-track"><div class="hbar-fill red" style="width:3%"></div></div><span class="pct">1</span></div>
+            <a class="link small" href="connections.html" style="display:inline-block; margin-top:4px">View health details</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header row">
+              <div>
+                <div class="card-title">Suspended merchants</div>
+                <div class="card-desc">Orders kept safely, not delivered</div>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="merchants.html"><span class="icon-sm" data-icon="chevron_right"></span></a>
+            </div>
+            <div class="condensed-list" style="padding: 6px 20px 14px">
+              <div class="cl-row">
+                <span class="avatar soft" style="width:26px;height:26px;font-size:10px">AC</span>
+                <div class="cl-main"><div class="nm">Aurora Crafts Co.</div><div class="sb">2 orders held</div></div>
+                <a class="btn btn-outline btn-sm" href="merchant.html">Review</a>
+              </div>
+              <div class="cl-row">
+                <span class="avatar soft" style="width:26px;height:26px;font-size:10px">KT</span>
+                <div class="cl-main"><div class="nm">Kinfolk Textiles</div><div class="sb">0 orders held</div></div>
+                <a class="btn btn-outline btn-sm" href="merchant.html">Review</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header row">
+              <div>
+                <div class="card-title">Recent audit events</div>
+                <div class="card-desc">Sensitive actions</div>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="audit.html"><span class="icon-sm" data-icon="chevron_right"></span></a>
+            </div>
+            <div class="condensed-list" style="padding: 6px 20px 14px">
+              <div class="cl-row">
+                <div class="cl-main"><div class="nm" style="font-size:12.5px">Merchant suspended</div><div class="sb">Aurora Crafts Co. · by ops@shq.example</div></div>
+                <span class="tiny muted nowrap">22 min</span>
+              </div>
+              <div class="cl-row">
+                <div class="cl-main"><div class="nm" style="font-size:12.5px">Mapping corrected</div><div class="sb">Mountain Ridge Supply · by merchant</div></div>
+                <span class="tiny muted nowrap">1 h</span>
+              </div>
+              <div class="cl-row">
+                <div class="cl-main"><div class="nm" style="font-size:12.5px">Order retried</div><div class="sb">#SO-1029 · by ops@shq.example</div></div>
+                <span class="tiny muted nowrap">2 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

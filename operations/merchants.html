@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merchants · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item active" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; <b>Merchants</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px">
+        <div>
+          <h1 style="font-size:20px">Merchants</h1>
+          <p class="muted small" style="margin:2px 0 0">Every merchant on SHQ Connector, their stores and operational state.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" data-modal-open="onboard-modal"><span class="icon-sm" data-icon="plus"></span> Onboard merchant</button>
+      </div>
+
+      <section class="grid-4" style="margin-bottom:18px">
+        <div class="card card-metric">
+          <div class="k-label">All merchants</div>
+          <div class="k-value">13</div>
+          <div class="k-sub">12 active · 1 archived</div>
+        </div>
+        <div class="card card-metric">
+          <div class="k-label">Active stores</div>
+          <div class="k-value">29</div>
+          <div class="k-sub">across all merchants</div>
+        </div>
+        <div class="card card-metric">
+          <div class="k-label">Need attention</div>
+          <div class="k-value" style="color:var(--warning-strong)">5</div>
+          <div class="k-sub">have open exceptions</div>
+        </div>
+        <div class="card card-metric">
+          <div class="k-label">Suspended</div>
+          <div class="k-value" style="color:var(--danger-strong)">2</div>
+          <div class="k-sub">orders held safely</div>
+        </div>
+      </section>
+
+      <div class="card">
+        <div class="table-toolbar">
+          <div class="left">
+            <div class="search">
+              <span class="icon" data-icon="search"></span>
+              <input class="input" type="text" placeholder="Search name or ID…" style="height:32px">
+            </div>
+            <select class="select" style="width:150px">
+              <option>Any status</option>
+              <option>Active</option>
+              <option>Suspended</option>
+              <option>Invited</option>
+              <option>Archived</option>
+            </select>
+            <select class="select" style="width:170px">
+              <option>Has exceptions</option>
+              <option>Any exceptions</option>
+              <option>No exceptions</option>
+            </select>
+          </div>
+          <div class="right">
+            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="download"></span> Export</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="border:none; box-shadow:none; border-radius:0">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Merchant</th>
+                <th>Status</th>
+                <th>Stores</th>
+                <th>Exceptions</th>
+                <th>Orders · 28d</th>
+                <th>Value · 28d</th>
+                <th>Last activity</th>
+                <th class="right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="clickable" onclick="location.href='merchant.html'">
+                <td>
+                  <div class="cell-title">
+                    <span class="avatar soft" style="width:32px;height:32px;font-size:12px">NS</span>
+                    <div class="grow">
+                      <div class="t">North Shore Goods Co.</div>
+                      <div class="sub mono">mch_91w7ql</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td>3</td>
+                <td><span class="badge red">5</span></td>
+                <td>34</td>
+                <td class="amount">$1,284.90 + €82.40</td>
+                <td class="sub nowrap">9 min ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="merchant.html">Open</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='merchant.html'">
+                <td>
+                  <div class="cell-title">
+                    <span class="avatar soft" style="width:32px;height:32px;font-size:12px">BB</span>
+                    <div class="grow">
+                      <div class="t">Bella Beads Co.</div>
+                      <div class="sub mono">mch_38p2s8</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td>2</td>
+                <td><span class="badge red">3</span></td>
+                <td>61</td>
+                <td class="amount">$2,008.00</td>
+                <td class="sub nowrap">38 min ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="merchant.html">Open</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='merchant.html'">
+                <td>
+                  <div class="cell-title">
+                    <span class="avatar soft" style="width:32px;height:32px;font-size:12px">AC</span>
+                    <div class="grow">
+                      <div class="t">Aurora Crafts Co.</div>
+                      <div class="sub mono">mch_66k9n1</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge red"><span class="dot"></span>Suspended</span></td>
+                <td>4</td>
+                <td><span class="badge red">4</span></td>
+                <td>98</td>
+                <td class="amount">$3,412.70</td>
+                <td class="sub nowrap">22 min ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="merchant.html">Open</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='merchant.html'">
+                <td>
+                  <div class="cell-title">
+                    <span class="avatar soft" style="width:32px;height:32px;font-size:12px">MR</span>
+                    <div class="grow">
+                      <div class="t">Mountain Ridge Supply</div>
+                      <div class="sub mono">mch_10t4d7</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td>3</td>
+                <td><span class="badge red">2</span></td>
+                <td>29</td>
+                <td class="amount">$976.40</td>
+                <td class="sub nowrap">1 h ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="merchant.html">Open</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='merchant.html'">
+                <td>
+                  <div class="cell-title">
+                    <span class="avatar soft" style="width:32px;height:32px;font-size:12px">KT</span>
+                    <div class="grow">
+                      <div class="t">Kinfolk Textiles</div>
+                      <div class="sub mono">mch_55r2b3</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge red"><span class="dot"></span>Suspended</span></td>
+                <td>1</td>
+                <td><span class="badge neutral">0</span></td>
+                <td>12</td>
+                <td class="amount">$401.00</td>
+                <td class="sub nowrap">3 d ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="merchant.html">Open</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='merchant.html'">
+                <td>
+                  <div class="cell-title">
+                    <span class="avatar soft" style="width:32px;height:32px;font-size:12px">PG</span>
+                    <div class="grow">
+                      <div class="t">Prairie &amp; Grain</div>
+                      <div class="sub mono">mch_02x6j9</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge amber"><span class="dot"></span>Invited</span></td>
+                <td>0</td>
+                <td><span class="badge neutral">—</span></td>
+                <td>—</td>
+                <td>—</td>
+                <td class="sub nowrap">2 d ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="merchant.html">Open</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span>Showing 6 of 13 merchants</span>
+          <nav class="pagination">
+            <button class="page-btn" disabled><span class="icon-sm" data-icon="chevron_left"></span></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn"><span class="icon-sm" data-icon="chevron_right"></span></button>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Onboard modal -->
+<div class="modal-backdrop" id="onboard-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title">Onboard a merchant</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="field stack">
+        <div class="field"><label class="label">Merchant name</label><input class="input" placeholder="e.g. North Shore Goods Co."></div>
+        <div class="field-row">
+          <div class="field"><label class="label">Admin email</label><input class="input" type="email" placeholder="admin@company.com"></div>
+          <div class="field"><label class="label">Contact name</label><input class="input" placeholder="Full name"></div>
+        </div>
+        <div class="field">
+          <label class="label">Sales channels initially</label>
+          <div class="grid-3">
+            <label class="channel-card" style="padding:12px"><span class="store-logo shopify" style="width:26px;height:26px;font-size:11px">S</span><span class="cc-name">Shopify</span><input type="checkbox" checked style="margin-left:auto"></label>
+            <label class="channel-card" style="padding:12px"><span class="store-logo etsy" style="width:26px;height:26px;font-size:11px">E</span><span class="cc-name">Etsy</span><input type="checkbox" style="margin-left:auto"></label>
+            <label class="channel-card" style="padding:12px"><span class="store-logo woo" style="width:26px;height:26px;font-size:11px">W</span><span class="cc-name">WooCommerce</span><input type="checkbox" style="margin-left:auto"></label>
+          </div>
+        </div>
+        <div class="alert info" style="margin-top:2px">
+          <span class="icon" data-icon="info"></span>
+          <div class="a-body">An invitation email is sent to the admin. They complete sign-up and connect their first store.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" onclick="alert('Invitation sent. Merchant appears as “Invited”.')">Send invitation</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

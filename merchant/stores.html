@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stores · Merchant — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (merchant) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">Merchant workspace</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Workspace</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item active" href="stores.html"><span class="icon" data-icon="store"></span> Stores <span class="count">3</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Catalog</div>
+        <a class="nav-item" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog <span class="count">128</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Orders</div>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">34</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">5</span></a>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Workspace</div>
+        <a class="nav-item" href="analytics.html"><span class="icon" data-icon="chart"></span> Analytics</a>
+        <a class="nav-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar">AL</span>
+      <div class="who">
+        <div class="nm">Alex Lake</div>
+        <div class="rl">alex@northshore.co</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="user"></span> Profile</a>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">Merchant &nbsp;/&nbsp; <b>Stores</b></div>
+      <div class="spacer"></div>
+
+      <div class="dropdown store-switcher">
+        <button class="btn btn-outline" data-dropdown>
+          <span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px;border:none">S</span>
+          <span class="store-switcher-label" style="font-weight:600">North Shore Store</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:260px">
+          <div class="menu-title">Connected stores</div>
+          <button class="menu-item">
+            <span class="store-logo shopify" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">S</span>
+            <span class="grow">
+              <div style="font-weight:600">North Shore Store</div>
+              <div class="tiny muted">shop.northshore.co</div>
+            </span>
+            <span class="icon" style="color:var(--success-strong)" data-icon="check"></span>
+          </button>
+          <button class="menu-item">
+            <span class="store-logo etsy" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">E</span>
+            <span class="grow">
+              <div style="font-weight:600">NorthShoreSupplies</div>
+              <div class="tiny muted">etsy.com/shop/NorthShoreSupplies</div>
+            </span>
+          </button>
+          <button class="menu-item">
+            <span class="store-logo woo" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">W</span>
+            <span class="grow">
+              <div style="font-weight:600">North Shore Outlet</div>
+              <div class="tiny muted">outlet.northshore.co</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item" onclick="location.href='stores.html'"><span class="icon" data-icon="plus"></span> Connect a store</button>
+        </div>
+      </div>
+
+      <div class="search" style="width:220px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search orders, products…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Notifications</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 orders need mapping</div>
+              <div class="tiny muted">North Shore Store · 8 min ago</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='catalog.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="refresh"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Catalog sync completed</div>
+              <div class="tiny muted">Etsy · 26 min ago</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='orders.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="box"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">6 orders submitted</div>
+              <div class="tiny muted">Central SHQ store · 1 h ago</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='settings.html'">Notification preferences</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar" style="width:30px;height:30px">AL</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">Alex Lake</div>
+            <div class="tiny muted">alex@northshore.co</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="user"></span> Profile</a>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+          <a class="menu-item" href="../operations/index.html"><span class="icon" data-icon="shield"></span> SHQ Operations</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px">
+        <div>
+          <h1 style="font-size:20px">Connected stores</h1>
+          <div class="stores-summary" aria-label="Store connection summary">
+            <span class="badge neutral">3 stores</span>
+            <span class="badge green"><span class="dot"></span>2 healthy</span>
+            <span class="badge amber"><span class="dot"></span>1 needs attention</span>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-sm" data-modal-open="channel-modal"><span class="icon-sm" data-icon="plus"></span> Connect store</button>
+      </div>
+
+      <aside class="store-attention" aria-labelledby="store-attention-title">
+        <span class="icon attention-icon" data-icon="alert"></span>
+        <div class="grow">
+          <div class="attention-title" id="store-attention-title">North Shore Outlet needs attention</div>
+          <div class="attention-copy">Webhooks are paused. Last successful sync was 52 minutes ago.</div>
+        </div>
+        <a class="btn btn-outline btn-sm" href="settings.html">Review webhooks</a>
+      </aside>
+
+      <div class="card" style="margin-bottom:22px">
+        <div class="table-wrap">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Store</th>
+                <th>Status</th>
+                <th>Last sync</th>
+                <th>Products</th>
+                <th>Orders</th>
+                <th class="right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="cell-title">
+                    <span class="store-logo shopify" style="width:28px;height:28px;border-radius:7px;font-size:11px">S</span>
+                    <div><div style="font-weight:650">North Shore Store</div><div class="sub">shop.northshore.co</div></div>
+                  </div>
+                </td>
+                <td><span class="badge green status-pill"><span class="dot"></span>Connected</span></td>
+                <td class="sub">22 min ago</td>
+                <td>76</td>
+                <td>21</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="mapping.html">Mapping</a>
+                    <div class="dropdown">
+                      <button class="btn btn-ghost btn-icon btn-sm" data-dropdown aria-label="Actions for North Shore Store"><span class="icon" data-icon="dots"></span></button>
+                      <div class="dropdown-menu">
+                        <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+                        <button class="menu-item" onclick="alert('Catalog sync requested for North Shore Store.')"><span class="icon" data-icon="refresh"></span> Sync now</button>
+                        <button class="menu-item" onclick="alert('Shopify OAuth flow would open here.')"><span class="icon" data-icon="refresh-cw"></span> Reconnect</button>
+                        <button class="menu-item danger" data-modal-open="disconnect-modal"><span class="icon" data-icon="ban"></span> Disconnect</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-title">
+                    <span class="store-logo etsy" style="width:28px;height:28px;border-radius:7px;font-size:11px">E</span>
+                    <div><div style="font-weight:650">NorthShoreSupplies</div><div class="sub">etsy.com/shop/NorthShoreSupplies</div></div>
+                  </div>
+                </td>
+                <td><span class="badge green status-pill"><span class="dot"></span>Connected</span></td>
+                <td class="sub">26 min ago</td>
+                <td>37</td>
+                <td>8</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-ghost btn-sm" href="mapping.html">Mapping</a>
+                    <div class="dropdown">
+                      <button class="btn btn-ghost btn-icon btn-sm" data-dropdown aria-label="Actions for NorthShoreSupplies"><span class="icon" data-icon="dots"></span></button>
+                      <div class="dropdown-menu">
+                        <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+                        <button class="menu-item" onclick="alert('Catalog sync requested for NorthShoreSupplies.')"><span class="icon" data-icon="refresh"></span> Sync now</button>
+                        <button class="menu-item" onclick="alert('Etsy OAuth flow would open here.')"><span class="icon" data-icon="refresh-cw"></span> Reconnect</button>
+                        <button class="menu-item danger" data-modal-open="disconnect-modal"><span class="icon" data-icon="ban"></span> Disconnect</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-title">
+                    <span class="store-logo woo" style="width:28px;height:28px;border-radius:7px;font-size:11px">W</span>
+                    <div><div style="font-weight:650">North Shore Outlet</div><div class="sub">outlet.northshore.co</div></div>
+                  </div>
+                </td>
+                <td><span class="badge amber status-pill"><span class="dot"></span>Degraded</span></td>
+                <td class="sub">52 min ago</td>
+                <td>15</td>
+                <td>5</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-outline btn-sm" href="settings.html">Fix webhooks</a>
+                    <div class="dropdown">
+                      <button class="btn btn-ghost btn-icon btn-sm" data-dropdown aria-label="Actions for North Shore Outlet"><span class="icon" data-icon="dots"></span></button>
+                      <div class="dropdown-menu">
+                        <a class="menu-item" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a>
+                        <button class="menu-item" onclick="alert('WooCommerce REST credentials flow would open here.')"><span class="icon" data-icon="refresh-cw"></span> Reconnect</button>
+                        <button class="menu-item danger" data-modal-open="disconnect-modal"><span class="icon" data-icon="ban"></span> Disconnect</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Channel picker -->
+<div class="modal-backdrop" id="channel-modal" role="dialog" aria-modal="true" aria-labelledby="channel-modal-title">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title" id="channel-modal-title">Connect a store</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close aria-label="Close channel selection"><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <p class="small muted">Choose the sales channel you want to connect.</p>
+      <div class="connect-channel-list">
+        <button class="channel-card" data-connect-channel="Shopify">
+          <span class="store-logo shopify" style="width:36px;height:36px">S</span>
+          <span class="grow"><span class="cc-name">Shopify</span><span class="cc-desc">OAuth connection</span></span>
+          <span class="icon" data-icon="chevron_right"></span>
+        </button>
+        <button class="channel-card" data-connect-channel="Etsy">
+          <span class="store-logo etsy" style="width:36px;height:36px">E</span>
+          <span class="grow"><span class="cc-name">Etsy</span><span class="cc-desc">OAuth connection</span></span>
+          <span class="icon" data-icon="chevron_right"></span>
+        </button>
+        <button class="channel-card" data-connect-channel="WooCommerce">
+          <span class="store-logo woo" style="width:36px;height:36px">W</span>
+          <span class="grow"><span class="cc-name">WooCommerce</span><span class="cc-desc">REST API credentials + webhooks</span></span>
+          <span class="icon" data-icon="chevron_right"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Connect authorization -->
+<div class="modal-backdrop" id="connect-modal" role="dialog" aria-modal="true" aria-labelledby="connect-channel-title">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title" id="connect-channel-title">Connect Shopify</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close aria-label="Close connection dialog"><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="alert info" style="margin-bottom:16px">
+        <span class="icon" data-icon="lock"></span>
+        <div class="a-body" id="connect-channel-copy">You’ll be redirected to Shopify to authorize SHQ Connector securely. No credentials are stored here.</div>
+      </div>
+      <div class="field">
+        <label class="label" for="shopify-stack">Also sync the catalog from this store?</label>
+        <label class="checkbox" style="margin-top:2px">
+          <input type="checkbox" checked>
+          Import my products and variants so I can map them to the SHQ catalog
+        </label>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" id="connect-authorize" data-connect-authorize>Authorize with Shopify</button>
+    </div>
+  </div>
+</div>
+
+<!-- Disconnect confirm -->
+<div class="modal-backdrop" id="disconnect-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title">Disconnect store</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="alert danger" style="margin-bottom:12px">
+        <span class="icon" data-icon="alert"></span>
+        <div class="a-body">New orders will stop being received. Existing orders already stored keep their status and can still be retried.</div>
+      </div>
+      <p class="small muted">You can reconnect this store at any time — products and past mappings are kept.</p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-danger" data-modal-close>Disconnect store</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalog · Merchant — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (merchant) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">Merchant workspace</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Workspace</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="stores.html"><span class="icon" data-icon="store"></span> Stores <span class="count">3</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Catalog</div>
+        <a class="nav-item active" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog <span class="count">128</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Orders</div>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">34</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">5</span></a>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Workspace</div>
+        <a class="nav-item" href="analytics.html"><span class="icon" data-icon="chart"></span> Analytics</a>
+        <a class="nav-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar">AL</span>
+      <div class="who">
+        <div class="nm">Alex Lake</div>
+        <div class="rl">alex@northshore.co</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="user"></span> Profile</a>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">Merchant &nbsp;/&nbsp; <b>Catalog</b></div>
+      <div class="spacer"></div>
+
+      <div class="dropdown">
+        <button class="btn btn-outline" data-dropdown>
+          <span class="store-logo shopify" style="width:20px;height:20px;border-radius:5px;font-size:10px;border:none">S</span>
+          <span style="font-weight:600">North Shore Store</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:260px">
+          <div class="menu-title">Connected stores</div>
+          <button class="menu-item">
+            <span class="store-logo shopify" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">S</span>
+            <span class="grow">
+              <div style="font-weight:600">North Shore Store</div>
+              <div class="tiny muted">shop.northshore.co</div>
+            </span>
+            <span class="icon" style="color:var(--success-strong)" data-icon="check"></span>
+          </button>
+          <button class="menu-item" onclick="location.href='catalog.html'">
+            <span class="store-logo etsy" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">E</span>
+            <span class="grow">
+              <div style="font-weight:600">NorthShoreSupplies</div>
+              <div class="tiny muted">etsy.com/shop/NorthShoreSupplies</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='catalog.html'">
+            <span class="store-logo woo" style="width:24px;height:24px;border-radius:6px;font-size:11px;border:none">W</span>
+            <span class="grow">
+              <div style="font-weight:600">North Shore Outlet</div>
+              <div class="tiny muted">outlet.northshore.co</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item" onclick="location.href='stores.html'"><span class="icon" data-icon="plus"></span> Connect a store</button>
+        </div>
+      </div>
+
+      <div class="search" style="width:220px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search orders, products…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Notifications</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 orders need mapping</div>
+              <div class="tiny muted">North Shore Store · 8 min ago</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='catalog.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="refresh"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Catalog sync completed</div>
+              <div class="tiny muted">Etsy · 26 min ago</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='orders.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="box"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">6 orders submitted</div>
+              <div class="tiny muted">Central SHQ store · 1 h ago</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='settings.html'">Notification preferences</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar" style="width:30px;height:30px">AL</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">Alex Lake</div>
+            <div class="tiny muted">alex@northshore.co</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="user"></span> Profile</a>
+          <a class="menu-item" href="settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+          <a class="menu-item" href="../operations/index.html"><span class="icon" data-icon="shield"></span> SHQ Operations</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px">
+        <div>
+          <h1 style="font-size:20px">Synchronized catalog</h1>
+          <p class="muted small" style="margin:2px 0 0">Products imported from your connected stores. Map them to the SHQ catalog so orders can flow.</p>
+        </div>
+        <div class="flex">
+          <a class="btn btn-outline btn-sm" href="settings.html"><span class="icon-sm" data-icon="settings"></span> Sync settings</a>
+          <button class="btn btn-primary btn-sm" onclick="alert('Sync requested for all connected stores.')"><span class="icon-sm" data-icon="refresh"></span> Sync all stores</button>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:18px">
+        <div class="card card-metric" style="display:flex; align-items:center; gap:14px">
+          <span class="store-logo" style="width:38px;height:38px"><span class="icon" data-icon="layers"></span></span>
+          <div>
+            <div class="k-value" style="font-size:20px; margin:0">128</div>
+            <div class="k-label" style="font-size:12px">products synced</div>
+          </div>
+        </div>
+        <div class="card card-metric" style="display:flex; align-items:center; gap:14px">
+          <span class="store-logo" style="width:38px;height:38px; background:var(--success-soft); color:var(--success-strong)"><span class="icon" data-icon="branch"></span></span>
+          <div>
+            <div class="k-value" style="font-size:20px; margin:0">114 <span class="tiny muted" style="font-weight:500">/ 128</span></div>
+            <div class="k-label" style="font-size:12px">mapped to SHQ catalog</div>
+          </div>
+        </div>
+        <div class="card card-metric" style="display:flex; align-items:center; gap:14px">
+          <span class="store-logo" style="width:38px;height:38px; background:var(--warning-soft); color:var(--warning-strong)"><span class="icon" data-icon="alert"></span></span>
+          <div>
+            <div class="k-value" style="font-size:20px; margin:0; color:var(--warning-strong)">14</div>
+            <div class="k-label" style="font-size:12px">need mapping</div>
+          </div>
+          <div class="grow"></div>
+          <a class="btn btn-outline btn-sm" href="mapping.html">Map now</a>
+        </div>
+      </div>
+
+      <div class="alert success" style="margin-bottom:18px">
+        <span class="icon" data-icon="check"></span>
+        <div class="grow">
+          <div class="a-title">Last full sync completed 26 minutes ago</div>
+          <div class="a-body">37 new Etsy products were imported. New source products appear automatically when stores publish them.</div>
+        </div>
+        <div class="a-actions"><span class="badge green">Healthy</span></div>
+      </div>
+
+      <div class="card">
+        <div class="table-toolbar">
+          <div class="left">
+            <div class="search">
+              <span class="icon" data-icon="search"></span>
+              <input class="input" type="text" placeholder="Search products…" style="height:32px">
+            </div>
+            <select class="select" style="width:150px">
+              <option>All channels</option>
+              <option>Shopify</option>
+              <option>Etsy</option>
+              <option>WooCommerce</option>
+            </select>
+            <select class="select" style="width:150px">
+              <option>All mappings</option>
+              <option>Mapped</option>
+              <option>Needs mapping</option>
+            </select>
+            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="filter"></span> More filters</button>
+          </div>
+          <div class="right">
+            <button class="btn btn-ghost btn-sm"><span class="icon-sm" data-icon="sliders"></span> Columns</button>
+            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="download"></span> Export CSV</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="border:none; box-shadow:none; border-radius:0">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th style="width:34px"><input type="checkbox"></th>
+                <th>Product</th>
+                <th>Channel</th>
+                <th>Variants</th>
+                <th>Source status</th>
+                <th>Mapping</th>
+                <th>Synced</th>
+                <th class="right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="clickable" onclick="location.href='mapping.html'">
+                <td><input type="checkbox"></td>
+                <td>
+                  <div class="cell-title">
+                    <span class="thumb" style="background:oklch(0.95 0.03 250); color:oklch(0.5 0.2 250)">W</span>
+                    <span class="grow">
+                      <div class="t">Waves Tee — Black</div>
+                      <div class="sub mono">WK-100-BLK</div>
+                    </span>
+                  </div>
+                </td>
+                <td><span class="badge outline">Shopify</span></td>
+                <td>3</td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td><span class="badge green status-pill">Mapped</span></td>
+                <td class="sub nowrap">22 min ago</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='mapping.html'">
+                <td><input type="checkbox"></td>
+                <td>
+                  <div class="cell-title">
+                    <span class="thumb" style="background:oklch(0.95 0.04 85); color:oklch(0.55 0.16 70)">H</span>
+                    <span class="grow">
+                      <div class="t">Harbor Hoodie — Charcoal</div>
+                      <div class="sub mono">HB-220-CHR</div>
+                    </span>
+                  </div>
+                </td>
+                <td><span class="badge outline">Etsy</span></td>
+                <td>5</td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td><span class="badge amber status-pill">Needs mapping</span></td>
+                <td class="sub nowrap">26 min ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-soft btn-sm" href="mapping.html">Map</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='mapping.html'">
+                <td><input type="checkbox"></td>
+                <td>
+                  <div class="cell-title">
+                    <span class="thumb" style="background:oklch(0.95 0.03 340); color:oklch(0.5 0.2 320)">C</span>
+                    <span class="grow">
+                      <div class="t">Cliff Beanie — Multi</div>
+                      <div class="sub mono">CB-115-M</div>
+                    </span>
+                  </div>
+                </td>
+                <td><span class="badge outline">WooCommerce</span></td>
+                <td>2</td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td><span class="badge green status-pill">Mapped</span></td>
+                <td class="sub nowrap">52 min ago</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='mapping.html'">
+                <td><input type="checkbox"></td>
+                <td>
+                  <div class="cell-title">
+                    <span class="thumb" style="background:oklch(0.94 0.03 140); color:oklch(0.5 0.18 160)">P</span>
+                    <span class="grow">
+                      <div class="t">Portland Tote — Natural</div>
+                      <div class="sub mono">PT-330-NAT</div>
+                    </span>
+                  </div>
+                </td>
+                <td><span class="badge outline">Shopify</span></td>
+                <td>1</td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td><span class="badge amber status-pill">Needs mapping</span></td>
+                <td class="sub nowrap">1 h ago</td>
+                <td>
+                  <div class="row-actions">
+                    <a class="btn btn-soft btn-sm" href="mapping.html">Map</a>
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='mapping.html'">
+                <td><input type="checkbox"></td>
+                <td>
+                  <div class="cell-title">
+                    <span class="thumb" style="background:oklch(0.95 0.02 0); color:oklch(0.45 0.02 0)">S</span>
+                    <span class="grow">
+                      <div class="t">Summit Crew — Navy</div>
+                      <div class="sub mono">SM-410-NVY</div>
+                    </span>
+                  </div>
+                </td>
+                <td><span class="badge outline">Etsy</span></td>
+                <td>4</td>
+                <td><span class="badge amber"><span class="dot"></span>Draft</span></td>
+                <td><span class="badge green status-pill">Mapped</span></td>
+                <td class="sub nowrap">2 h ago</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="clickable" onclick="location.href='mapping.html'">
+                <td><input type="checkbox"></td>
+                <td>
+                  <div class="cell-title">
+                    <span class="thumb" style="background:oklch(0.95 0.03 200); color:oklch(0.5 0.14 220)">R</span>
+                    <span class="grow">
+                      <div class="t">Rainier Cap — Black</div>
+                      <div class="sub mono">RN-510-BLK</div>
+                    </span>
+                  </div>
+                </td>
+                <td><span class="badge outline">Shopify</span></td>
+                <td>2</td>
+                <td><span class="badge green"><span class="dot"></span>Active</span></td>
+                <td><span class="badge green status-pill">Mapped</span></td>
+                <td class="sub nowrap">3 h ago</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span>Showing 6 of 128 products</span>
+          <nav class="pagination">
+            <button class="page-btn" disabled><span class="icon-sm" data-icon="chevron_left"></span></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">…</button>
+            <button class="page-btn">22</button>
+            <button class="page-btn"><span class="icon-sm" data-icon="chevron_right"></span></button>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHQ Connector — UI Reference Prototype</title>
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app">
+  <div class="main" style="margin-left:0">
+    <div class="content" style="max-width:1040px">
+
+      <div class="flex-between" style="padding: 8px 0 24px;">
+        <div class="flex">
+          <span class="brand-mark">SHQ</span>
+          <div>
+            <div style="font-weight:650">SHQ Connector</div>
+            <div class="small muted">Static UI reference prototype</div>
+          </div>
+        </div>
+        <div class="flex">
+          <a class="btn btn-ghost btn-sm" href="#screens">Screens</a>
+          <a class="btn btn-outline btn-sm" href="README.md">README</a>
+          <a class="btn btn-primary btn-sm" href="merchant/index.html">Open merchant demo</a>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 40px 40px 34px;">
+        <div class="badge outline">Reference prototype · Printify-inspired flow · Shadcn-like system</div>
+        <h1 style="font-size: 30px; margin-top: 18px; max-width: 640px; line-height:1.2">
+          Paid orders from connected stores, mapped and pushed to the central SHQ Shopify Store.
+        </h1>
+        <p class="muted" style="margin-top: 14px; max-width: 600px;">
+          This folder is the approved static reference for the product UI
+          (<a href="../../docs/decisions/0006-printify-inspired-product-ui.md" style="text-decoration:underline">ADR-006</a>).
+          Two workspaces are modeled below. Screens are static HTML/CSS/JS and open directly in a browser.
+        </p>
+        <div class="flowline" style="margin-top: 26px; display:flex; flex-wrap:wrap; gap:10px;">
+          <span class="badge neutral"><span class="icon-sm" data-icon="store"></span> Connect stores</span>
+          <span class="icon-sm muted" data-icon="arrow_right"></span>
+          <span class="badge neutral"><span class="icon-sm" data-icon="layers"></span> Sync catalog</span>
+          <span class="icon-sm muted" data-icon="arrow_right"></span>
+          <span class="badge neutral"><span class="icon-sm" data-icon="branch"></span> Map products</span>
+          <span class="icon-sm muted" data-icon="arrow_right"></span>
+          <span class="badge neutral"><span class="icon-sm" data-icon="zap"></span> Receive orders</span>
+          <span class="icon-sm muted" data-icon="arrow_right"></span>
+          <span class="badge neutral"><span class="icon-sm" data-icon="box"></span> Push to SHQ store</span>
+        </div>
+      </div>
+
+      <section id="screens" class="mt-4">
+        <div class="grid-3">
+          <div class="card card-body" style="display:flex; flex-direction:column; gap:14px; padding:22px;">
+            <span class="store-logo" style="width:38px;height:38px"><span class="icon" data-icon="user"></span></span>
+            <div>
+              <h3 style="font-size:16px">Merchant workspace</h3>
+              <p class="small muted" style="margin-top:4px">Self-service portal for one merchant: connections, mappings, orders and exceptions.</p>
+            </div>
+            <div class="condensed-list" style="font-size:12.5px">
+              <a class="cl-row link" href="merchant/sign-in.html"><span class="icon" data-icon="lock"></span> Sign in</a>
+              <a class="cl-row link" href="merchant/index.html"><span class="icon" data-icon="home"></span> Overview</a>
+              <a class="cl-row link" href="merchant/stores.html"><span class="icon" data-icon="store"></span> Connected stores</a>
+              <a class="cl-row link" href="merchant/catalog.html"><span class="icon" data-icon="layers"></span> Synchronized catalog</a>
+              <a class="cl-row link" href="merchant/mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a>
+              <a class="cl-row link" href="merchant/orders.html"><span class="icon" data-icon="cart"></span> Orders</a>
+              <a class="cl-row link" href="merchant/exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions</a>
+              <a class="cl-row link" href="merchant/analytics.html"><span class="icon" data-icon="chart"></span> Analytics</a>
+              <a class="cl-row link" href="merchant/settings.html"><span class="icon" data-icon="settings"></span> Settings</a>
+            </div>
+            <div class="grow"></div>
+            <a class="btn btn-primary btn-block" href="merchant/index.html">Explore merchant flow</a>
+          </div>
+
+          <div class="card card-body" style="display:flex; flex-direction:column; gap:14px; padding:22px;">
+            <span class="store-logo" style="width:38px;height:38px"><span class="icon" data-icon="shield"></span></span>
+            <div>
+              <h3 style="font-size:16px">SHQ Operations</h3>
+              <p class="small muted" style="margin-top:4px">Cross-merchant backoffice: merchant management, order oversight and exceptions.</p>
+            </div>
+            <div class="condensed-list" style="font-size:12.5px">
+              <a class="cl-row link" href="operations/sign-in.html"><span class="icon" data-icon="lock"></span> Sign in</a>
+              <a class="cl-row link" href="operations/index.html"><span class="icon" data-icon="activity"></span> Overview</a>
+              <a class="cl-row link" href="operations/merchants.html"><span class="icon" data-icon="users"></span> Merchants</a>
+              <a class="cl-row link" href="operations/orders.html"><span class="icon" data-icon="cart"></span> Order oversight</a>
+              <a class="cl-row link" href="operations/exceptions.html"><span class="icon" data-icon="alert"></span> Exception queue</a>
+            </div>
+            <div class="grow"></div>
+            <a class="btn btn-outline btn-block" href="operations/index.html">Explore operations flow</a>
+          </div>
+
+          <div class="card" style="padding:22px; display:flex; flex-direction:column;">
+            <span class="store-logo" style="width:38px;height:38px"><span class="icon" data-icon="layers"></span></span>
+            <div style="margin-top:14px">
+              <h3 style="font-size:16px">Design system</h3>
+              <p class="small muted" style="margin-top:4px">Shadcn-like tokens and primitives shared by every screen. Open files directly; no build step.</p>
+            </div>
+            <div class="mt-4 condensed-list" style="font-size:12.5px">
+              <a class="cl-row link" href="assets/css/app.css"><span class="icon" data-icon="file"></span> assets/css/app.css — tokens + components</a>
+              <a class="cl-row link" href="assets/js/app.js"><span class="icon" data-icon="file"></span> assets/js/app.js — icons + interactions</a>
+            </div>
+            <div class="grow"></div>
+            <div class="alert info" style="margin-top:16px">
+              <span class="icon" data-icon="info"></span>
+              <div class="a-body">Stores shown as Shopify, Etsy and WooCommerce connections. Brand marks are abstracted — no copied branding.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="muted small" style="padding: 26px 2px 30px; border-top:1px solid var(--border); margin-top:8px">
+        SHQ Connector · static reference prototype for ADR-006 · <span id="year"></span>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connection health · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; <b>Connection health</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:16px">
+        <div>
+          <h1 style="font-size:20px">Connection health</h1>
+          <p class="muted small" style="margin:2px 0 0">Webhook delivery and sync health for every connected source store.</p>
+        </div>
+        <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="refresh-cw"></span> Run health check</button>
+      </div>
+
+      <div class="alert warning" style="margin-bottom:16px">
+        <span class="icon" data-icon="alert"></span>
+        <div class="grow">
+          <div class="a-title">2 connections degraded</div>
+          <div class="a-body">North Shore Outlet webhooks paused (reconnect requested). Bella Beads Co. inventory sync delayed 40+ min.</div>
+        </div>
+        <div class="a-actions"><span class="badge amber status-pill"><span class="dot"></span>Attention</span></div>
+      </div>
+
+      <section class="grid-4" style="margin-bottom:16px">
+        <div class="card card-metric"><div class="k-label">Source stores</div><div class="k-value">29</div><div class="k-sub">across 12 merchants</div></div>
+        <div class="card card-metric"><div class="k-label">Healthy</div><div class="k-value" style="color:var(--success-strong)">26</div><div class="k-sub">last event &lt; 5 min</div></div>
+        <div class="card card-metric"><div class="k-label">Delayed</div><div class="k-value" style="color:var(--warning-strong)">2</div><div class="k-sub">sync behind schedule</div></div>
+        <div class="card card-metric"><div class="k-label">Paused</div><div class="k-value" style="color:var(--danger-strong)">1</div><div class="k-sub">webhooks off · North Shore Outlet</div></div>
+      </section>
+
+      <section class="grid-3" style="margin-bottom:16px">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Shopify connected stores</div><div class="k-sub">16 of 29</div></div>
+          <div class="card-body"><div class="hbar-row"><span class="nm">Healthy</span><div class="hbar-track"><div class="hbar-fill green" style="width:94%"></div></div><span class="pct">15</span></div><div class="hbar-row"><span class="nm">Paused</span><div class="hbar-track"><div class="hbar-fill red" style="width:6%"></div></div><span class="pct">1</span></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Etsy connected stores</div><div class="k-sub">9 of 29</div></div>
+          <div class="card-body"><div class="hbar-row"><span class="nm">Healthy</span><div class="hbar-track"><div class="hbar-fill green" style="width:89%"></div></div><span class="pct">8</span></div><div class="hbar-row"><span class="nm">Delayed</span><div class="hbar-track"><div class="hbar-fill amber" style="width:11%"></div></div><span class="pct">1</span></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">WooCommerce connected stores</div><div class="k-sub">4 of 29</div></div>
+          <div class="card-body"><div class="hbar-row"><span class="nm">Healthy</span><div class="hbar-track"><div class="hbar-fill green" style="width:100%"></div></div><span class="pct">4</span></div><div class="hbar-row"><span class="nm">Delayed</span><div class="hbar-track"><div class="hbar-fill" style="width:0%"></div></div><span class="pct">0</span></div></div>
+        </div>
+      </section>
+
+      <div class="card">
+        <div class="table-toolbar">
+          <div class="left">
+            <select class="select" style="width:180px"><option>All channels</option><option>Shopify</option><option>Etsy</option><option>WooCommerce</option></select>
+            <select class="select" style="width:160px"><option>Any status</option><option>Healthy</option><option>Delayed</option><option>Paused</option></select>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="border:none; box-shadow:none; border-radius:0">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Merchant</th>
+                <th>Store</th>
+                <th>Channel</th>
+                <th>Status</th>
+                <th>Webhook</th>
+                <th>Last event</th>
+                <th>Inventory sync</th>
+                <th>Error rate · 28 d</th>
+                <th class="right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="merchant.html" class="link">North Shore Goods Co.</a></td>
+                <td><div class="cell-title"><span class="store-logo shopify">S</span>North Shore Store</div></td>
+                <td>Shopify</td>
+                <td><span class="badge green status-pill"><span class="dot"></span>Healthy</span></td>
+                <td class="tiny muted nowrap">last delivery 2 min ago</td>
+                <td class="sub nowrap">2 min ago</td>
+                <td class="sub nowrap">3 min ago</td>
+                <td class="muted">0.2%</td>
+                <td><div class="row-actions"><a class="btn btn-ghost btn-sm" href="audit.html">View</a></div></td>
+              </tr>
+              <tr>
+                <td><a href="merchant.html" class="link">North Shore Goods Co.</a></td>
+                <td><div class="cell-title"><span class="store-logo etsy">E</span>NorthShoreSupplies</div></td>
+                <td>Etsy</td>
+                <td><span class="badge green status-pill"><span class="dot"></span>Healthy</span></td>
+                <td class="tiny muted nowrap">last delivery 4 min ago</td>
+                <td class="sub nowrap">4 min ago</td>
+                <td class="sub nowrap">6 min ago</td>
+                <td class="muted">0.0%</td>
+                <td><div class="row-actions"><a class="btn btn-ghost btn-sm" href="audit.html">View</a></div></td>
+              </tr>
+              <tr>
+                <td><a href="merchant.html" class="link">North Shore Goods Co.</a></td>
+                <td><div class="cell-title"><span class="store-logo woo">W</span>North Shore Outlet</div></td>
+                <td>WooCommerce</td>
+                <td><span class="badge red status-pill"><span class="dot"></span>Paused</span></td>
+                <td class="tiny muted nowrap redefine">webhooks off · since 30 Aug</td>
+                <td class="sub nowrap">1 d ago</td>
+                <td class="sub nowrap">—</td>
+                <td class="muted">0.0%</td>
+                <td><div class="row-actions"><button class="btn btn-soft btn-sm" data-modal-open="reconnect-modal">Reconnect</button></div></td>
+              </tr>
+              <tr>
+                <td><a href="merchant.html" class="link">Bella Beads Co.</a></td>
+                <td><div class="cell-title"><span class="store-logo etsy">E</span>BellaBeadsBoutique</div></td>
+                <td>Etsy</td>
+                <td><span class="badge amber status-pill"><span class="dot"></span>Delayed</span></td>
+                <td class="tiny muted nowrap">last delivery 6 min ago</td>
+                <td class="sub nowrap">6 min ago</td>
+                <td class="sub nowrap" style="color:var(--warning-strong)">40 min ago</td>
+                <td class="muted">1.8%</td>
+                <td><div class="row-actions"><button class="btn btn-ghost btn-sm" onclick="alert('Queued a full resync for Bella Beads Boutique.')"><span class="icon-sm" data-icon="refresh-cw"></span> Resync</button></div></td>
+              </tr>
+              <tr>
+                <td><a href="merchant.html" class="link">Aurora Crafts Co.</a></td>
+                <td><div class="cell-title"><span class="store-logo shopify">S</span>AuroraCraftsShop</div></td>
+                <td>Shopify</td>
+                <td><span class="badge green status-pill"><span class="dot"></span>Healthy</span></td>
+                <td class="tiny muted nowrap">last delivery 1 min ago</td>
+                <td class="sub nowrap">1 min ago</td>
+                <td class="sub nowrap">1 min ago</td>
+                <td class="muted">0.1%</td>
+                <td><div class="row-actions"><a class="btn btn-ghost btn-sm" href="audit.html">View</a></div></td>
+              </tr>
+              <tr>
+                <td><a href="merchant.html" class="link">Mountain Ridge Supply</a></td>
+                <td><div class="cell-title"><span class="store-logo etsy">E</span>MountainRidgeShop</div></td>
+                <td>Etsy</td>
+                <td><span class="badge green status-pill"><span class="dot"></span>Healthy</span></td>
+                <td class="tiny muted nowrap">last delivery 3 min ago</td>
+                <td class="sub nowrap">3 min ago</td>
+                <td class="sub nowrap">5 min ago</td>
+                <td class="muted">0.0%</td>
+                <td><div class="row-actions"><a class="btn btn-ghost btn-sm" href="audit.html">View</a></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span>Showing 6 of 29 source stores</span>
+          <nav class="pagination">
+            <button class="page-btn" disabled><span class="icon-sm" data-icon="chevron_left"></span></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">…</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn"><span class="icon-sm" data-icon="chevron_right"></span></button>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Reconnect modal -->
+<div class="modal-backdrop" id="reconnect-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title">Reconnect North Shore Outlet</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="alert info" style="margin-bottom:12px">
+        <span class="icon" data-icon="info"></span>
+        <div class="a-body">Webhooks on this store were paused on 30 Aug. Reconnect triggers a fresh WooCommerce webhook registration without re-processing historical orders.</div>
+      </div>
+      <div class="field">
+        <label class="label">Scope of reconnect</label>
+        <select class="select"><option>Orders + inventory webhooks</option><option>Orders only</option><option>Inventory only</option></select>
+      </div>
+      <div class="field mt-4">
+        <label class="label" for="reconnect-note">Note (written to audit log)</label>
+        <textarea class="textarea" id="reconnect-note" placeholder="e.g. Merchant confirmed the outage is resolved"></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" onclick="alert('Reconnect queued. Webhooks will register within a minute.')">Reconnect source</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

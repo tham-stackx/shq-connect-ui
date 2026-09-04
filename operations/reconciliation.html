@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reconciliation · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; <b>Reconciliation</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:16px">
+        <div>
+          <h1 style="font-size:20px">Sales &amp; reconciliation report</h1>
+          <p class="muted small" style="margin:2px 0 0">Operational reconciliation across merchants. Source currencies are always kept separate.</p>
+        </div>
+        <div class="flex">
+          <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="download"></span> Export CSV</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-body" style="display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end">
+          <div class="field" style="min-width:200px">
+            <label class="label">Merchant</label>
+            <select class="select"><option>All merchants</option><option>North Shore Goods Co.</option><option>Bella Beads Co.</option><option>Aurora Crafts Co.</option></select>
+          </div>
+          <div class="field" style="min-width:150px">
+            <label class="label">Period</label>
+            <select class="select"><option>Last 28 days</option><option>This month</option><option>Last month</option><option>Last quarter</option></select>
+          </div>
+          <div class="field" style="min-width:150px">
+            <label class="label">Currency</label>
+            <select class="select"><option>All currencies</option><option>USD</option><option>EUR</option><option>VND</option></select>
+          </div>
+          <button class="btn btn-primary">Apply</button>
+          <span class="tiny muted" style="margin-left:auto">Generated 30 Aug 2026 · 10:02 UTC</span>
+        </div>
+      </div>
+
+      <section class="grid-4" style="margin-bottom:16px">
+        <div class="card card-metric"><div class="k-label">Paid orders received</div><div class="k-value">342</div><div class="k-sub">0 duplicates filtered</div></div>
+        <div class="card card-metric">
+          <div class="k-label">Original order value</div>
+          <div class="k-value">$12,490.10</div>
+          <div class="k-sub">+ €920.40 · + ₫18,400,000 · <span class="muted">kept separate</span></div>
+        </div>
+        <div class="card card-metric"><div class="k-label">Submitted</div><div class="k-value">324</div><div class="k-sub">94.7% of received</div></div>
+        <div class="card card-metric"><div class="k-label">Waiting / failed</div><div class="k-value" style="color:var(--danger-strong)">18</div><div class="k-sub">9 mapping · 7 failed · 2 held</div></div>
+      </section>
+
+      <div class="card">
+        <div class="card-header row">
+          <div>
+            <div class="card-title">By merchant</div>
+            <div class="card-desc">Order-level breakdown for operational reconciliation</div>
+          </div>
+        </div>
+        <div class="table-wrap" style="border:none; box-shadow:none">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Merchant</th>
+                <th>Received</th>
+                <th>Value (USD)</th>
+                <th>Value (other)</th>
+                <th>Submitted</th>
+                <th>Mapping</th>
+                <th>Failed</th>
+                <th class="right">Export</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">NS</span><div style="font-weight:600">North Shore Goods Co.</div></div></td>
+                <td>34</td><td class="amount">$1,284.90</td><td class="sub">€82.40</td>
+                <td>29</td><td class="sub">2</td><td class="sub" style="color:var(--danger-strong)">3</td>
+                <td><div class="row-actions"><button class="btn btn-ghost btn-sm" onclick="alert('Merchant-level CSV export (demo).')"><span class="icon-sm" data-icon="download"></span> CSV</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">BB</span><div style="font-weight:600">Bella Beads Co.</div></div></td>
+                <td>61</td><td class="amount">$2,008.00</td><td class="sub">—</td>
+                <td>57</td><td class="sub">1</td><td class="sub" style="color:var(--danger-strong)">3</td>
+                <td><div class="row-actions"><button class="btn btn-ghost btn-sm" onclick="alert('Merchant-level CSV export (demo).')"><span class="icon-sm" data-icon="download"></span> CSV</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">AC</span><div style="font-weight:600">Aurora Crafts Co.</div></div></td>
+                <td>98</td><td class="amount">$3,412.70</td><td class="sub">—</td>
+                <td>94</td><td class="sub">1</td><td class="sub">1</td>
+                <td><div class="row-actions"><button class="btn btn-ghost btn-sm" onclick="alert('Merchant-level CSV export (demo).')"><span class="icon-sm" data-icon="download"></span> CSV</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="cell-title"><span class="avatar soft" style="width:28px;height:28px;font-size:11px">MR</span><div style="font-weight:600">Mountain Ridge Supply</div></div></td>
+                <td>29</td><td class="amount">$976.40</td><td class="sub">€212.00</td>
+                <td>26</td><td class="sub">2</td><td class="sub">1</td>
+                <td><div class="row-actions"><button class="btn btn-ghost btn-sm" onclick="alert('Merchant-level CSV export (demo).')"><span class="icon-sm" data-icon="download"></span> CSV</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="cell-title"><span class="store-logo plain" style="width:28px;height:28px;border-radius:50%;font-size:11px">…</span><div style="color:var(--muted-foreground)">8 other merchants</div></div></td>
+                <td>120</td><td class="amount">$4,808.10</td><td class="sub">₫18,400,000</td>
+                <td>118</td><td class="sub">3</td><td class="sub">1</td>
+                <td><div class="row-actions"><button class="btn btn-ghost btn-sm"><span class="icon-sm" data-icon="download"></span> CSV</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          Currency totals are never combined. SHQ Connector does not convert currencies — USD, EUR and VND appear as separate values.
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header row">
+          <div>
+            <div class="card-title">Reconciliation health</div>
+            <div class="card-desc">Ingestion vs destination for the last run</div>
+          </div>
+          <span class="badge green"><span class="dot"></span>Clean</span>
+        </div>
+        <div class="card-body">
+          <div class="hbar-row"><span class="nm">Received</span><div class="hbar-track"><div class="hbar-fill" style="width:100%"></div></div><span class="pct">342</span></div>
+          <div class="hbar-row"><span class="nm">Submitted</span><div class="hbar-track"><div class="hbar-fill green" style="width:95%"></div></div><span class="pct">324</span></div>
+          <div class="hbar-row"><span class="nm">In queue</span><div class="hbar-track"><div class="hbar-fill amber" style="width:5%"></div></div><span class="pct">18</span></div>
+          <div class="hbar-row"><span class="nm">Drift (unknown)</span><div class="hbar-track"><div class="hbar-fill red" style="width:0.5%"></div></div><span class="pct">0.3%</span></div>
+        </div>
+        <div class="card-footer">
+          Drift means a submitted order whose destination outcome is unknown. Such orders await an explicit reconciliation job before retry — this keeps delivery idempotent.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

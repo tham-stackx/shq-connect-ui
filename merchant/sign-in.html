@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in · Merchant — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="splash">
+  <div class="splash-frame">
+    <div class="splash-panel">
+      <div class="flex" style="gap:10px; margin-bottom:26px">
+        <span class="brand-mark" style="width:34px;height:34px;border-radius:9px;font-size:14px">SHQ</span>
+        <div>
+          <div style="font-weight:650; font-size:15px">SHQ Connector</div>
+          <div class="small muted">Merchant workspace</div>
+        </div>
+      </div>
+
+      <h1 style="font-size:22px">Sign in to your workspace</h1>
+      <p class="muted small" style="margin-top:6px">Connect your stores and keep paid orders flowing to the SHQ store.</p>
+
+      <form onsubmit="location.href='index.html'; return false;" class="stack" style="margin-top:22px">
+        <div class="field">
+          <label class="label" for="email">Email address</label>
+          <input class="input" id="email" type="email" placeholder="you@company.com" value="alex@northshore.co">
+        </div>
+        <div class="field">
+          <div class="flex-between">
+            <label class="label" for="password">Password</label>
+            <a class="link muted-link tiny" href="#forgot" onclick="alert('In a real product this opens the password reset flow.')">Forgot password?</a>
+          </div>
+          <input class="input" id="password" type="password" placeholder="••••••••••">
+        </div>
+        <label class="checkbox"><input type="checkbox" checked> Keep me signed in</label>
+        <button class="btn btn-primary btn-block" type="submit" style="height:38px; margin-top:4px">Sign in</button>
+      </form>
+
+      <div class="small muted" style="margin-top:16px; text-align:center">
+        Need a workspace? <a class="link" href="#join" onclick="alert('In a real product this starts merchant onboarding.')">Contact SHQ</a>
+      </div>
+
+      <a class="link muted-link small" href="../operations/sign-in.html" style="display:block; text-align:center; margin-top:22px">
+        SHQ administrator? Sign in to Operations
+      </a>
+    </div>
+
+    <div class="splash-side">
+      <div>
+        <div class="badge outline" style="background:transparent;color:inherit;border-color:color-mix(in srgb, var(--primary-foreground) 40%, transparent)">Merchant flow</div>
+        <p class="q" style="margin-top:18px">Every paid order your stores receive is stored, mapped and pushed to the central SHQ Shopify Store.</p>
+      </div>
+      <div class="flowline">
+        <div class="fl"><span class="fdot">1</span> Connect your Shopify, Etsy, and WooCommerce stores</div>
+        <div class="fl"><span class="fdot">2</span> Sync and map your catalog once</div>
+        <div class="fl"><span class="fdot">3</span> Orders arrive automatically with no lost or duplicate deliveries</div>
+        <div class="fl"><span class="fdot">4</span> Resolve the rare exception from a single queue</div>
+      </div>
+      <div class="small" style="color:color-mix(in srgb, var(--primary-foreground) 70%, transparent)">
+        Static reference prototype — sign-in is simulated.
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

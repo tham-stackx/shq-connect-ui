@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="splash">
+  <div class="splash-frame">
+    <div class="splash-panel">
+      <div class="flex" style="gap:10px; margin-bottom:26px">
+        <span class="brand-mark" style="width:34px;height:34px;border-radius:9px;font-size:14px">SHQ</span>
+        <div>
+          <div style="font-weight:650; font-size:15px">SHQ Connector</div>
+          <div class="small muted">SHQ Operations</div>
+        </div>
+      </div>
+
+      <h1 style="font-size:22px">SHQ Operations sign-in</h1>
+      <p class="muted small" style="margin-top:6px">Cross-merchant control for SHQ administrators. Restricted access.</p>
+
+      <div class="alert danger" style="margin-bottom:18px">
+        <span class="icon" data-icon="shield"></span>
+        <div class="a-body">This workspace is limited to authorized SHQ staff. All sensitive actions are written to the audit log.</div>
+      </div>
+
+      <form onsubmit="location.href='index.html'; return false;" class="stack" style="margin-top:6px">
+        <div class="field">
+          <label class="label" for="op-email">SHQ email address</label>
+          <input class="input" id="op-email" type="email" placeholder="ops@shq.example" value="ops@shq.example">
+        </div>
+        <div class="field">
+          <div class="flex-between">
+            <label class="label" for="op-password">Password</label>
+            <a class="link muted-link tiny" href="#forgot" onclick="alert('In a real product this opens the password reset flow.')">Forgot password?</a>
+          </div>
+          <input class="input" id="op-password" type="password" placeholder="••••••••••">
+        </div>
+        <label class="checkbox"><input type="checkbox"> Require a second factor on this device</label>
+        <button class="btn btn-primary btn-block" type="submit" style="height:38px; margin-top:4px">Sign in to Operations</button>
+      </form>
+
+      <a class="link muted-link small" href="../merchant/sign-in.html" style="display:block; text-align:center; margin-top:22px">
+        Merchant? Sign in to your workspace
+      </a>
+    </div>
+
+    <div class="splash-side">
+      <div>
+        <div class="badge outline" style="background:transparent;color:inherit;border-color:color-mix(in srgb, var(--primary-foreground) 40%, transparent)">SHQ Operations</div>
+        <p class="q" style="margin-top:18px">Every merchant, connection and order in one place — with intervention only where it is actually needed.</p>
+      </div>
+      <div class="flowline">
+        <div class="fl"><span class="fdot">1</span> Onboard and manage merchants</div>
+        <div class="fl"><span class="fdot">2</span> Oversee order flow across all stores</div>
+        <div class="fl"><span class="fdot">3</span> Clear exceptions: mapping, failures, suspensions</div>
+        <div class="fl"><span class="fdot">4</span> Reconcile values and export order-level data</div>
+      </div>
+      <div class="small" style="color:color-mix(in srgb, var(--primary-foreground) 70%, transparent)">
+        Static reference prototype — sign-in is simulated.
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

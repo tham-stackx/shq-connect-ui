@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit history · SHQ Operations — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ======= Sidebar (operations) ======= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-mark" style="text-decoration:none">SHQ</a>
+      <a href="index.html" style="text-decoration:none">
+        <div class="brand-name">SHQ Connector</div>
+        <div class="brand-sub">SHQ Operations</div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a>
+        <a class="nav-item" href="merchants.html"><span class="icon" data-icon="users"></span> Merchants <span class="count">12</span></a>
+        <a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">342</span></a>
+        <div class="nav-sub">
+          <a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">18</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="avatar gold">SO</span>
+      <div class="who">
+        <div class="nm">SHQ Admin</div>
+        <div class="rl">ops@shq.example</div>
+      </div>
+      <div class="dropdown grow" style="text-align:right">
+        <button class="btn btn-icon btn-ghost btn-sm" data-dropdown><span class="icon" data-icon="dots"></span></button>
+        <div class="dropdown-menu">
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ======= Main column ======= -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
+      <div class="crumb">SHQ Operations &nbsp;/&nbsp; <b>Audit history</b></div>
+      <div class="spacer"></div>
+
+      <div class="search" style="width:240px">
+        <span class="icon" data-icon="search"></span>
+        <input class="input" type="text" placeholder="Search merchants, orders…" style="height:32px">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-icon" data-dropdown aria-label="Notifications">
+          <span class="icon" data-icon="bell"></span>
+        </button>
+        <div class="dropdown-menu" style="min-width:300px">
+          <div class="menu-title">Alerts</div>
+          <button class="menu-item" onclick="location.href='exceptions.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="alert"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">18 orders in the exception queue</div>
+              <div class="tiny muted">9 mapping · 7 failed · 2 suspended</div>
+            </span>
+            <span class="badge red">New</span>
+          </button>
+          <button class="menu-item" onclick="location.href='connections.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="globe"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">2 connections degraded</div>
+              <div class="tiny muted">North Shore Outlet · Bella Beads Co.</div>
+            </span>
+          </button>
+          <button class="menu-item" onclick="location.href='reconciliation.html'">
+            <span class="store-logo plain" style="width:28px;height:28px;border-radius:7px"><span class="icon" data-icon="scale"></span></span>
+            <span class="grow">
+              <div style="font-weight:600">Reconciliation clean</div>
+              <div class="tiny muted">No destination drift detected</div>
+            </span>
+          </button>
+          <div class="menu-sep"></div>
+          <button class="menu-item muted-link" style="justify-content:center" onclick="location.href='connections.html'">All system health</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-ghost btn-sm" data-dropdown style="gap:8px">
+          <span class="avatar gold" style="width:30px;height:30px">SO</span>
+          <span class="icon" data-icon="chevron_down"></span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="menu-title">Signed in as</div>
+          <div style="padding:0 9px 6px">
+            <div style="font-weight:600;font-size:13px">SHQ Admin</div>
+            <div class="tiny muted">ops@shq.example · Administrator</div>
+          </div>
+          <div class="menu-sep"></div>
+          <a class="menu-item" href="audit.html"><span class="icon" data-icon="file"></span> Audit log</a>
+          <a class="menu-item" href="../merchant/index.html"><span class="icon" data-icon="user"></span> Switch to merchant view</a>
+          <div class="menu-sep"></div>
+          <a class="menu-item danger" href="sign-in.html"><span class="icon" data-icon="logout"></span> Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Page content -->
+
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:16px">
+        <div>
+          <h1 style="font-size:20px">Audit history</h1>
+          <p class="muted small" style="margin:2px 0 0">Every sensitive action on merchants, orders, mappings and connections.</p>
+        </div>
+        <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="download"></span> Export CSV</button>
+      </div>
+
+      <div class="alert info" style="margin-bottom:16px">
+        <span class="icon" data-icon="info"></span>
+        <div class="grow">
+          <div class="a-title">Immutable audit trail</div>
+          <div class="a-body">Events are append-only. Constant-time completion hashes chain each batch so tampering is detectable by reconciling against SCHQ signatures.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-body" style="display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end">
+          <div class="field" style="min-width:200px">
+            <label class="label">Merchant scope</label>
+            <select class="select"><option>All merchants</option><option>North Shore Goods Co.</option><option>Aurora Crafts Co.</option><option>Kinfolk Textiles</option></select>
+          </div>
+          <div class="field" style="min-width:160px">
+            <label class="label">Action</label>
+            <select class="select"><option>All actions</option><option>merchant.suspended</option><option>merchant.reactivated</option><option>connection.paused</option><option>mapping.updated</option></select>
+          </div>
+          <div class="field" style="min-width:150px">
+            <label class="label">Actor</label>
+            <select class="select"><option>Any actor</option><option>SHQ Admin</option><option>Alex Lake</option><option>System</option></select>
+          </div>
+          <div class="field" style="min-width:140px">
+            <label class="label">Period</label>
+            <select class="select"><option>Last 7 days</option><option>Last 30 days</option><option>Last 90 days</option></select>
+          </div>
+          <button class="btn btn-ghost">Clear</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap" style="border:none; box-shadow:none">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>When</th>
+                <th>Actor</th>
+                <th>Action</th>
+                <th style="min-width:220px">Target</th>
+                <th>Scope</th>
+                <th class="right">More</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="sub nowrap">31 Aug 2026 · 09:28 UTC</td>
+                <td><div class="cell-title"><span class="avatar soft" style="width:24px;height:24px;font-size:10px">SO</span>SHQ Admin</div></td>
+                <td><span class="badge red">merchant.suspended</span></td>
+                <td class="cell-title"><a href="merchant.html" class="link" style="font-weight:600">Aurora Crafts Co.</a> <div class="sub">Reason: billing delinquent · auto-suspend</div></td>
+                <td><span class="store-logo shopify" style="width:18px;height:18px;border-radius:5px;font-size:9px">S</span> <span class="tiny muted">2 stores</span></td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" data-modal-open="audit-modal"><span class="icon-sm" data-icon="chevron_down"></span></button></td>
+              </tr>
+              <tr>
+                <td class="sub nowrap">31 Aug 2026 · 09:12 UTC</td>
+                <td><div class="cell-title"><span class="avatar soft" style="width:24px;height:24px;font-size:10px">SO</span>SHQ Admin</div></td>
+                <td><span class="badge amber">connection.paused</span></td>
+                <td class="cell-title"><a href="connections.html" class="link" style="font-weight:600">North Shore Outlet</a> <div class="sub">WooCommerce webhooks paused · sync disabled</div></td>
+                <td><span class="tiny muted">North Shore Goods Co.</span></td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" data-modal-open="audit-modal"><span class="icon-sm" data-icon="chevron_down"></span></button></td>
+              </tr>
+              <tr>
+                <td class="sub nowrap">30 Aug 2026 · 18:22 UTC</td>
+                <td><div class="cell-title"><span class="avatar soft" style="width:24px;height:24px;font-size:10px">AL</span>Alex Lake</div></td>
+                <td><span class="badge blue">mapping.updated</span></td>
+                <td class="cell-title">12 mappings <div class="sub">Bulk edit by CSV upload · destination prices +12%</div></td>
+                <td><span class="tiny muted">North Shore Goods Co.</span></td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" data-modal-open="audit-modal"><span class="icon-sm" data-icon="chevron_down"></span></button></td>
+              </tr>
+              <tr>
+                <td class="sub nowrap">30 Aug 2026 · 16:05 UTC</td>
+                <td><div class="cell-title"><span class="avatar soft" style="width:24px;height:24px;font-size:10px">SO</span>SHQ Admin</div></td>
+                <td><span class="badge red">merchant.suspended</span></td>
+                <td class="cell-title"><a href="merchant.html" class="link" style="font-weight:600">Kinfolk Textiles</a> <div class="sub">Reason: API key rotation request · manual</div></td>
+                <td><span class="tiny muted">1 store</span></td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" data-modal-open="audit-modal"><span class="icon-sm" data-icon="chevron_down"></span></button></td>
+              </tr>
+              <tr>
+                <td class="sub nowrap">30 Aug 2026 · 09:17 UTC</td>
+                <td><div class="cell-title"><span class="avatar soft" style="width:24px;height:24px;font-size:10px">SY</span>System</div></td>
+                <td><span class="badge neutral">reconciliation.run</span></td>
+                <td class="cell-title">Reconciliation job #RC-4390 <div class="sub">342 received · 324 submitted · 0 drift</div></td>
+                <td><span class="tiny muted">global</span></td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" data-modal-open="audit-modal"><span class="icon-sm" data-icon="chevron_down"></span></button></td>
+              </tr>
+              <tr>
+                <td class="sub nowrap">29 Aug 2026 · 14:40 UTC</td>
+                <td><div class="cell-title"><span class="avatar soft" style="width:24px;height:24px;font-size:10px">SO</span>SHQ Admin</div></td>
+                <td><span class="badge blue">order.resolved</span></td>
+                <td class="cell-title">#SO-1021 <a href="../merchant/order.html" class="link">—</a> <div class="sub">Resolved 1 failed submission · retried and delivered</div></td>
+                <td><span class="tiny muted">North Shore Goods Co.</span></td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" data-modal-open="audit-modal"><span class="icon-sm" data-icon="chevron_down"></span></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span>Showing 6 of 142 events · last 30 days</span>
+          <nav class="pagination">
+            <button class="page-btn" disabled><span class="icon-sm" data-icon="chevron_left"></span></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">…</button>
+            <button class="page-btn">24</button>
+            <button class="page-btn"><span class="icon-sm" data-icon="chevron_right"></span></button>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Audit event modal -->
+<div class="modal-backdrop" id="audit-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="m-title">Audit event detail</span>
+      <button class="btn btn-ghost btn-icon btn-sm" data-modal-close><span class="icon" data-icon="x"></span></button>
+    </div>
+    <div class="modal-body">
+      <div class="kv">
+        <div class="kv-row"><span class="k">Event ID</span><span class="v mono tiny">evt_6f2b9c14d77e</span></div>
+        <div class="kv-row"><span class="k">Action</span><span class="v"><span class="badge red">merchant.suspended</span></span></div>
+        <div class="kv-row"><span class="k">Actor</span><span class="v">SHQ Admin · ops@shq.example · id 1</span></div>
+        <div class="kv-row"><span class="k">Target</span><span class="v">Aurora Crafts Co. · mch_88b4zx</span></div>
+        <div class="kv-row"><span class="k">When</span><span class="v">31 Aug 2026 · 09:28:12 UTC</span></div>
+        <div class="kv-row"><span class="k">IP</span><span class="v mono tiny">103.185.112.44</span></div>
+        <div class="kv-row"><span class="k">Source</span><span class="v">SHQ Operations UI</span></div>
+        <div class="kv-row"><span class="k">Reason</span><span class="v">billing delinquent · auto-suspend threshold reached</span></div>
+        <div class="kv-row"><span class="k">Chain hash</span><span class="v mono tiny">a1b2c3…9f0e (prev) → d4e5…2a8b</span></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-modal-close>Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

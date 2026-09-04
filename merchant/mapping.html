@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapping · Merchant — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><a href="index.html" class="brand-mark">SHQ</a><a href="index.html"><div class="brand-name">SHQ Connector</div><div class="brand-sub">Merchant workspace</div></a></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-title">Workspace</div><a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a><a class="nav-item" href="stores.html"><span class="icon" data-icon="store"></span> Stores <span class="count">3</span></a></div>
+      <div class="nav-section"><div class="nav-section-title">Catalog</div><a class="nav-item" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog <span class="count">128</span></a><div class="nav-sub"><a class="nav-item active" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a></div></div>
+      <div class="nav-section"><div class="nav-section-title">Orders</div><a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">34</span></a><div class="nav-sub"><a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">5</span></a></div></div>
+    </nav>
+    <div class="sidebar-foot"><span class="avatar">AL</span><div class="who"><div class="nm">Alex Lake</div><div class="rl">alex@northshore.co</div></div></div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+  <div class="main">
+    <header class="topbar"><button class="btn btn-ghost btn-icon menu-btn" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button><div class="crumb">Merchant &nbsp;/&nbsp; Catalog &nbsp;/&nbsp; <b>Mapping</b></div></header>
+    <main class="content">
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px"><div><h1 style="font-size:20px">Mapping</h1><p class="muted small" style="margin:2px 0 0">Tell SHQ which SHQ-catalog product and variant each source product maps to. Orders use these mappings to avoid manual work.</p></div><a class="btn btn-primary btn-sm" href="mapping-new.html"><span class="icon-sm" data-icon="plus"></span> New mapping</a></div>
+      <section class="mapping-list" aria-labelledby="mapping-list-heading">
+        <div class="card">
+          <div class="card-header row"><div><div class="card-title" id="mapping-list-heading">Product mappings</div><div class="card-desc">Resolve incomplete mappings before they hold up incoming orders.</div></div><span class="badge amber"><span class="dot"></span>14 need attention</span></div>
+          <div class="mapping-controls"><div class="search mapping-search"><span class="icon" data-icon="search"></span><input class="input" id="mapping-search" type="search" placeholder="Search product name or SKU" aria-label="Search mappings"></div><div class="mapping-control-actions"><label class="sr-only" for="mapping-channel">Filter by sales channel</label><select class="select" id="mapping-channel" aria-label="Filter by sales channel"><option value="all">All channels</option><option value="shopify">Shopify</option><option value="etsy">Etsy</option><option value="woocommerce">WooCommerce</option></select><div class="segmented" role="group" aria-label="Filter mapping status"><button type="button" class="active" data-mapping-filter="all" aria-pressed="true">All</button><button type="button" data-mapping-filter="needs-attention" aria-pressed="false">Needs attention</button><button type="button" data-mapping-filter="mapped" aria-pressed="false">Mapped</button></div></div></div>
+          <div class="table-wrap"><table class="tbl"><thead><tr><th>Source product</th><th>Destination</th><th>Status</th><th>Orders waiting</th><th>Updated</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="mapping-rows">
+            <tr class="clickable" data-search="harbor hoodie charcoal hb-220 etsy" data-channel="etsy" data-status="needs-attention"><td class="cell-title"><span class="thumb sm mapping-thumb gold">HH</span><span><span class="t">Harbor Hoodie</span><span class="s">HB-220 · Etsy · 5 variants</span></span></td><td><span class="mapping-destination">Hoodie Heavyweight</span><span class="sub">3 of 5 variants mapped</span></td><td><span class="badge amber">Needs mapping</span></td><td><span class="orders-waiting">5</span></td><td class="muted">8 min ago</td><td><a class="btn btn-outline btn-sm" href="mapping-new.html">Finish mapping</a></td></tr>
+            <tr class="clickable" data-search="dune cap sand dn-510 woocommerce" data-channel="woocommerce" data-status="needs-attention"><td class="cell-title"><span class="thumb sm mapping-thumb neutral">DC</span><span><span class="t">Dune Cap</span><span class="s">DN-510 · WooCommerce · 4 variants</span></span></td><td><span class="muted">No destination selected</span></td><td><span class="badge amber">Needs mapping</span></td><td><span class="orders-waiting">1</span></td><td class="muted">Yesterday</td><td><a class="btn btn-outline btn-sm" href="mapping-new.html">Start mapping</a></td></tr>
+            <tr class="clickable" data-search="wave liner ocean wl-050 shopify" data-channel="shopify" data-status="mapped"><td class="cell-title"><span class="thumb sm mapping-thumb blue">WL</span><span><span class="t">Wave Liner</span><span class="s">WL-050 · Shopify · 3 variants</span></span></td><td><span class="mapping-destination">SHQ Wave Liner</span><span class="sub">All variants mapped</span></td><td><span class="badge green">Fully mapped</span></td><td><span class="muted">None</span></td><td class="muted">29 Aug, 16:35</td><td><a class="btn btn-ghost btn-sm" href="mapping-new.html">View</a></td></tr>
+            <tr class="clickable" data-search="portland tote natural pt-330 shopify" data-channel="shopify" data-status="mapped"><td class="cell-title"><span class="thumb sm mapping-thumb green">PT</span><span><span class="t">Portland Tote</span><span class="s">PT-330 · Shopify · 1 variant</span></span></td><td><span class="mapping-destination">Canvas Tote</span><span class="sub">All variants mapped</span></td><td><span class="badge green">Fully mapped</span></td><td><span class="muted">None</span></td><td class="muted">27 Aug, 10:11</td><td><a class="btn btn-ghost btn-sm" href="mapping-new.html">View</a></td></tr>
+          </tbody></table><div class="mapping-empty" id="mapping-empty" hidden><span class="icon" data-icon="search"></span><div><strong>No mappings found</strong><span>Try another search term or clear a filter.</span></div></div></div>
+          <div class="card-footer"><span id="mapping-results" aria-live="polite">Showing 4 of 128 products</span><button class="btn btn-ghost btn-sm" type="button" id="clear-mapping-filters" hidden>Clear filters</button><span class="grow"></span><button class="btn btn-outline btn-sm" type="button">Load more</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+const mappingSearch=document.getElementById('mapping-search');
+const mappingChannel=document.getElementById('mapping-channel');
+const mappingRows=[...document.querySelectorAll('#mapping-rows tr')];
+const mappingEmpty=document.getElementById('mapping-empty');
+const mappingResults=document.getElementById('mapping-results');
+const clearMappingFilters=document.getElementById('clear-mapping-filters');
+let mappingStatus='all';
+function updateMappingList(){const query=mappingSearch.value.trim().toLowerCase(),channel=mappingChannel.value;let visible=0;mappingRows.forEach(row=>{const matches=row.dataset.search.includes(query)&&(channel==='all'||row.dataset.channel===channel)&&(mappingStatus==='all'||row.dataset.status===mappingStatus);row.hidden=!matches;if(matches)visible+=1});mappingEmpty.hidden=visible!==0;mappingResults.textContent=`Showing ${visible} of 128 products`;clearMappingFilters.hidden=query===''&&channel==='all'&&mappingStatus==='all'}
+function setMappingStatus(status){mappingStatus=status;document.querySelectorAll('[data-mapping-filter]').forEach(button=>{const active=button.dataset.mappingFilter===status;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});updateMappingList()}
+mappingSearch.addEventListener('input',updateMappingList);mappingChannel.addEventListener('change',updateMappingList);document.querySelectorAll('[data-mapping-filter]').forEach(button=>button.addEventListener('click',()=>setMappingStatus(button.dataset.mappingFilter)));clearMappingFilters.addEventListener('click',()=>{mappingSearch.value='';mappingChannel.value='all';setMappingStatus('all');mappingSearch.focus()});updateMappingList();
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New mapping · Merchant — SHQ Connector</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><a href="index.html" class="brand-mark">SHQ</a><a href="index.html"><div class="brand-name">SHQ Connector</div><div class="brand-sub">Merchant workspace</div></a></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-title">Workspace</div><a class="nav-item" href="index.html"><span class="icon" data-icon="home"></span> Overview</a><a class="nav-item" href="stores.html"><span class="icon" data-icon="store"></span> Stores <span class="count">3</span></a></div>
+      <div class="nav-section"><div class="nav-section-title">Catalog</div><a class="nav-item" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog <span class="count">128</span></a><div class="nav-sub"><a class="nav-item active" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a></div></div>
+      <div class="nav-section"><div class="nav-section-title">Orders</div><a class="nav-item" href="orders.html"><span class="icon" data-icon="cart"></span> Orders <span class="count">34</span></a><div class="nav-sub"><a class="nav-item" href="exceptions.html"><span class="icon" data-icon="alert"></span> Exceptions <span class="count crit">5</span></a></div></div>
+    </nav>
+    <div class="sidebar-foot"><span class="avatar">AL</span><div class="who"><div class="nm">Alex Lake</div><div class="rl">alex@northshore.co</div></div></div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+  <div class="main">
+    <header class="topbar"><button class="btn btn-ghost btn-icon menu-btn" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button><div class="crumb">Merchant &nbsp;/&nbsp; Catalog &nbsp;/&nbsp; <a href="mapping.html">Mapping</a> &nbsp;/&nbsp; <b>New mapping</b></div></header>
+    <main class="content">
+      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px"><div><h1 style="font-size:20px">New mapping</h1><p class="muted small" style="margin:2px 0 0">Match one source product and variant to its SHQ catalog destination.</p></div><a class="btn btn-ghost btn-sm" href="mapping.html">Back to mappings</a></div>
+      <div class="mapping-workspace">
+        <section class="card mapping-panel" aria-labelledby="merchant-products-heading">
+          <div class="card-header"><div class="card-title" id="merchant-products-heading">North Shore Store products</div><div class="card-desc">Choose the product being sold by the merchant.</div></div>
+          <div class="card-body"><div class="search"><span class="icon" data-icon="search"></span><input class="input" type="search" placeholder="Search merchant products" aria-label="Search merchant products"></div><div class="mapping-product-list" id="merchant-product-list" role="list"></div><div class="mapping-detail" id="merchant-detail"></div></div>
+        </section>
+        <section class="card mapping-panel" aria-labelledby="shq-products-heading">
+          <div class="card-header"><div class="card-title" id="shq-products-heading">SHQ products</div><div class="card-desc">Choose the destination product in the SHQ catalog.</div></div>
+          <div class="card-body"><div class="search"><span class="icon" data-icon="search"></span><input class="input" type="search" placeholder="Search SHQ products" aria-label="Search SHQ products"></div><div class="mapping-product-list" id="shq-product-list" role="list"></div><div class="mapping-detail" id="shq-detail"></div></div>
+        </section>
+        <div class="card-footer mapping-new-footer" id="mapping-save" hidden><span class="small muted grow" id="mapping-summary"></span><a class="btn btn-ghost btn-sm" href="mapping.html">Cancel</a><button class="btn btn-primary btn-sm" id="save-mapping"><span class="icon-sm" data-icon="check"></span> Save mapping</button></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+const productNames={merchant:['Harbor Hoodie','Wave Liner','Portland Tote','Cascade Jar','Dune Cap'],shq:['Hoodie Heavyweight','SHQ Wave Liner','Canvas Tote','Glass Jar','Classic Cap']};
+const createProducts=(side,count)=>Array.from({length:count},(_,index)=>{const number=index+1,name=productNames[side][index%productNames[side].length],isFirst=index===0;return {id:`${side}-${number}`,initials:isFirst?(side==='merchant'?'HB':'SHQ'):name.split(' ').map(word=>word[0]).join('').slice(0,2),name:isFirst?name:`${name} ${String(number).padStart(2,'0')}`,meta:side==='merchant'?`SRC-${String(number).padStart(3,'0')} · ${['Etsy','Shopify','WooCommerce'][index%3]}`:`SHQ catalog · ${4+index%9} variants`,colors:index%2?['Ocean','Black']:['Charcoal','Stone'],sizes:index%3?['S','M','L']:['M','L','XL']}});
+const catalog={merchant:createProducts('merchant',30),shq:createProducts('shq',20)};
+const selection={merchant:{product:'merchant-1',color:null,size:null},shq:{product:'shq-1',color:null,size:null}};
+const visibleProducts={merchant:8,shq:8};
+const productFor=side=>catalog[side].find(product=>product.id===selection[side].product);
+const complete=()=>['merchant','shq'].every(side=>selection[side].color&&selection[side].size);
+function renderProducts(side){const list=document.getElementById(`${side}-product-list`),scrollTop=list.scrollTop,products=catalog[side].slice(0,visibleProducts[side]);list.innerHTML=products.map(product=>`<button type="button" class="mapping-product${product.id===selection[side].product?' selected':''}" data-product-side="${side}" data-product-id="${product.id}" role="listitem"><span class="thumb sm">${product.initials}</span><span class="grow"><span class="mapping-product-name">${product.name}</span><span class="tiny muted">${product.meta}</span></span><span class="icon" data-icon="chevron_right"></span></button>`).join('')+(products.length<catalog[side].length?`<div class="mapping-load-more">Scroll to load more</div>`:'');list.scrollTop=scrollTop}
+function optionGroup(side,label,key,values){return `<fieldset class="mapping-option-group"><legend>${label}</legend><div class="mapping-options">${values.map(value=>`<button type="button" class="mapping-option${selection[side][key]===value?' selected':''}" data-option-side="${side}" data-option-key="${key}" data-option-value="${value}" aria-pressed="${selection[side][key]===value}">${value}</button>`).join('')}</div></fieldset>`}
+function renderDetail(side){const product=productFor(side),ready=selection[side].color&&selection[side].size;document.getElementById(`${side}-detail`).innerHTML=`<div class="mapping-detail-head"><div class="small semibold">${product.name}</div><div class="tiny muted">Choose options to identify the variant.</div></div>${optionGroup(side,'Color','color',product.colors)}${optionGroup(side,'Size','size',product.sizes)}<div class="mapping-variant${ready?' ready':''}" aria-live="polite">${ready?`<span class="badge green"><span class="dot"></span>Variant selected</span><span>${selection[side].color} / ${selection[side].size}</span>`:'Choose color and size to show a variant.'}</div>`}
+function renderSave(){const save=document.getElementById('mapping-save');save.hidden=!complete();if(complete())document.getElementById('mapping-summary').textContent=`${productFor('merchant').name} · ${selection.merchant.color} / ${selection.merchant.size} maps to ${productFor('shq').name} · ${selection.shq.color} / ${selection.shq.size}`}
+function render(){['merchant','shq'].forEach(side=>{renderProducts(side);renderDetail(side)});renderSave()}
+document.addEventListener('click',event=>{const product=event.target.closest('[data-product-side]');if(product){const side=product.dataset.productSide;selection[side]={product:product.dataset.productId,color:null,size:null};render();return}const option=event.target.closest('[data-option-side]');if(option){selection[option.dataset.optionSide][option.dataset.optionKey]=option.dataset.optionValue;render()}});
+['merchant','shq'].forEach(side=>document.getElementById(`${side}-product-list`).addEventListener('scroll',event=>{const list=event.currentTarget;if(list.scrollTop+list.clientHeight<list.scrollHeight-24||visibleProducts[side]>=catalog[side].length)return;visibleProducts[side]=Math.min(visibleProducts[side]+8,catalog[side].length);renderProducts(side)}));
+document.getElementById('save-mapping').addEventListener('click',()=>{window.location.href='mapping.html'});
+render();
+</script>
+</body>
+</html>

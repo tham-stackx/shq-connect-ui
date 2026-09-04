@@ -1,0 +1,27 @@
+service: shq-connect-ui
+
+image: shq-connect-ui
+
+servers:
+  web:
+    - stackx-vps
+
+registry:
+  server: localhost:5555
+
+builder:
+  arch: amd64
+  context: .
+
+env:
+  clear:
+    BASIC_AUTH_USER: shq-connect
+  secret:
+    - BASIC_AUTH_PASSWORD
+
+proxy:
+  host: shq-connect-ui.getstackx.com
+  ssl: true
+  app_port: 80
+  healthcheck:
+    path: /up

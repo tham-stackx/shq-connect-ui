@@ -10,6 +10,16 @@ This folder is a **static reference prototype**, not the shipped product. Featur
 
 No build step, no server required. Open any page directly in a browser (double-click the HTML file, or `open vendor/ui`). Everything is plain HTML + CSS + JS.
 
+## Deployment
+
+This prototype is deployable with Kamal 2 to the `stackx-vps` SSH host alias.
+
+1. Copy `.kamal/secrets.example` to `.kamal/secrets` and set `BASIC_AUTH_PASSWORD`.
+2. Run `kamal setup` for the first deployment, or `kamal deploy` for updates.
+
+Kamal Proxy provisions HTTPS for `shq-connect-ui.getstackx.com`; the site itself
+requires Basic Auth with username `shq`.
+
 - `index.html` — landing page linking the two workspaces
 - `merchant/` — Printify-style merchant workspace
 - `operations/` — SHQ Operations backoffice

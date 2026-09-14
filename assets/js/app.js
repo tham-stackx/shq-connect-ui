@@ -201,6 +201,29 @@
     });
   }
 
+  function setupProductOptions() {
+    document.querySelectorAll(".swatches").forEach(function (group) {
+      group.addEventListener("click", function (e) {
+        var choice = e.target.closest(".swatch");
+        if (!choice || choice.classList.contains("more")) return;
+        group.querySelectorAll(".swatch").forEach(function (item) {
+          var selected = item === choice;
+          item.classList.toggle("selected", selected);
+          item.setAttribute("aria-checked", selected ? "true" : "false");
+        });
+      });
+    });
+    document.querySelectorAll(".size-grid").forEach(function (group) {
+      group.addEventListener("click", function (e) {
+        var choice = e.target.closest(".size-choice");
+        if (!choice) return;
+        group.querySelectorAll(".size-choice").forEach(function (item) {
+          item.classList.toggle("selected", item === choice);
+        });
+      });
+    });
+  }
+
   /* ---- Routing-free page chrome ---------------------------- */
   function setGlobalChrome() {
     var y = document.getElementById("year");
@@ -215,6 +238,7 @@
     setupModals();
     setupStoreConnections();
     setupCheckboxes();
+    setupProductOptions();
     setGlobalChrome();
   });
 })();

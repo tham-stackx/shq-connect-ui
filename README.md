@@ -28,7 +28,7 @@ requires Basic Auth with username `shq`.
 
 | Area | Pages |
 | --- | --- |
-| Merchant | sign-in, overview dashboard, stores, catalog, mapping, orders, order detail, exceptions, analytics, settings |
+| Merchant | sign-in, overview dashboard, stores, products, mapping, orders, order detail, exceptions, analytics, settings |
 | Operations | sign-in, overview, merchants directory, merchant detail, order oversight, exceptions queue, reconciliation report, connection health, audit history |
 | Shared | `assets/css/app.css` (design system) · `assets/js/app.js` (icons + interactions) |
 

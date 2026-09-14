@@ -27,7 +27,8 @@
       </div>
       <div class="nav-section">
         <div class="nav-section-title">Catalog</div>
-        <a class="nav-item active" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog <span class="count">128</span></a>
+        <a class="nav-item active" href="catalog.html"><span class="icon" data-icon="layers"></span> Catalog</a>
+        <a class="nav-item" href="products.html"><span class="icon" data-icon="layers"></span> Products <span class="count">128</span></a>
         <div class="nav-sub">
           <a class="nav-item" href="mapping.html"><span class="icon" data-icon="branch"></span> Mapping</a>
         </div>
@@ -70,7 +71,7 @@
 
     <header class="topbar">
       <button class="btn btn-ghost btn-icon" id="menu-btn" aria-label="Menu"><span class="icon" data-icon="menu"></span></button>
-      <div class="crumb">Merchant &nbsp;/&nbsp; <b>Catalog</b></div>
+      <div class="crumb">Merchant &nbsp;/&nbsp; <b>Products</b></div>
       <div class="spacer"></div>
 
       <div class="dropdown">
@@ -167,246 +168,80 @@
       </div>
     </header>
 
-    <div class="content">
-      <!-- Page content -->
-
-      <div class="flex-between" style="flex-wrap:wrap; gap:12px; margin-bottom:18px">
+    <div class="content products-page">
+      <div class="products-hero">
         <div>
-          <h1 style="font-size:20px">Synchronized catalog</h1>
-          <p class="muted small" style="margin:2px 0 0">Products imported from your connected stores. Map them to the SHQ catalog so orders can flow.</p>
+          <div class="eyebrow">SHQ product catalog</div>
+          <h1>Find products to sell</h1>
+          <p class="muted">Browse premium blank products, customize them, and publish to your connected store.</p>
         </div>
-        <div class="flex">
-          <a class="btn btn-outline btn-sm" href="settings.html"><span class="icon-sm" data-icon="settings"></span> Sync settings</a>
-          <button class="btn btn-primary btn-sm" onclick="alert('Sync requested for all connected stores.')"><span class="icon-sm" data-icon="refresh"></span> Sync all stores</button>
-        </div>
-      </div>
-
-      <div class="grid-3" style="margin-bottom:18px">
-        <div class="card card-metric" style="display:flex; align-items:center; gap:14px">
-          <span class="store-logo" style="width:38px;height:38px"><span class="icon" data-icon="layers"></span></span>
-          <div>
-            <div class="k-value" style="font-size:20px; margin:0">128</div>
-            <div class="k-label" style="font-size:12px">products synced</div>
-          </div>
-        </div>
-        <div class="card card-metric" style="display:flex; align-items:center; gap:14px">
-          <span class="store-logo" style="width:38px;height:38px; background:var(--success-soft); color:var(--success-strong)"><span class="icon" data-icon="branch"></span></span>
-          <div>
-            <div class="k-value" style="font-size:20px; margin:0">114 <span class="tiny muted" style="font-weight:500">/ 128</span></div>
-            <div class="k-label" style="font-size:12px">mapped to SHQ catalog</div>
-          </div>
-        </div>
-        <div class="card card-metric" style="display:flex; align-items:center; gap:14px">
-          <span class="store-logo" style="width:38px;height:38px; background:var(--warning-soft); color:var(--warning-strong)"><span class="icon" data-icon="alert"></span></span>
-          <div>
-            <div class="k-value" style="font-size:20px; margin:0; color:var(--warning-strong)">14</div>
-            <div class="k-label" style="font-size:12px">need mapping</div>
-          </div>
-          <div class="grow"></div>
-          <a class="btn btn-outline btn-sm" href="mapping.html">Map now</a>
+        <div class="products-hero-actions">
+          <a class="btn btn-outline btn-sm" href="mapping.html"><span class="icon-sm" data-icon="branch"></span> View mappings</a>
+          <button class="btn btn-primary btn-sm" onclick="alert('Product creation flow opened.')"><span class="icon-sm" data-icon="plus"></span> Add product</button>
         </div>
       </div>
 
-      <div class="alert success" style="margin-bottom:18px">
-        <span class="icon" data-icon="check"></span>
-        <div class="grow">
-          <div class="a-title">Last full sync completed 26 minutes ago</div>
-          <div class="a-body">37 new Etsy products were imported. New source products appear automatically when stores publish them.</div>
-        </div>
-        <div class="a-actions"><span class="badge green">Healthy</span></div>
+      <div class="catalog-banner">
+        <div class="catalog-banner-icon"><span class="icon" data-icon="zap"></span></div>
+        <div class="grow"><strong>Build your next best seller</strong><span>Choose a product, add your design, and publish it to North Shore Store in a few clicks.</span></div>
+        <button class="btn btn-outline btn-sm" onclick="alert('Getting started guide opened.')">How it works <span class="icon-sm" data-icon="arrow_right"></span></button>
       </div>
 
-      <div class="card">
-        <div class="table-toolbar">
-          <div class="left">
-            <div class="search">
-              <span class="icon" data-icon="search"></span>
-              <input class="input" type="text" placeholder="Search products…" style="height:32px">
+      <div class="products-layout">
+        <aside class="category-rail" aria-label="Product categories">
+          <div class="category-label">Categories</div>
+          <button class="category-item active"><span class="category-icon"><span class="icon" data-icon="layers"></span></span> All products <span class="category-count">128</span></button>
+          <button class="category-item"><span class="category-icon apparel">T</span> Apparel <span class="category-count">54</span></button>
+          <button class="category-item"><span class="category-icon home">⌂</span> Home &amp; living <span class="category-count">31</span></button>
+          <button class="category-item"><span class="category-icon accessories">✦</span> Accessories <span class="category-count">22</span></button>
+          <button class="category-item"><span class="category-icon paper">▤</span> Paper products <span class="category-count">21</span></button>
+          <div class="category-divider"></div>
+          <div class="category-label">Your workspace</div>
+          <a class="category-link" href="mapping.html"><span class="icon-sm" data-icon="branch"></span> Mapped products <span class="category-count">114</span></a>
+          <a class="category-link" href="orders.html"><span class="icon-sm" data-icon="cart"></span> Published products</a>
+        </aside>
+
+        <section class="products-results" aria-labelledby="products-heading">
+          <div class="products-toolbar">
+            <div>
+              <h2 id="products-heading">All products</h2>
+              <p class="muted small">128 products available to add to your store</p>
             </div>
-            <select class="select" style="width:150px">
-              <option>All channels</option>
-              <option>Shopify</option>
-              <option>Etsy</option>
-              <option>WooCommerce</option>
-            </select>
-            <select class="select" style="width:150px">
-              <option>All mappings</option>
-              <option>Mapped</option>
-              <option>Needs mapping</option>
-            </select>
-            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="filter"></span> More filters</button>
+            <div class="products-toolbar-controls">
+              <label class="search products-search"><span class="icon" data-icon="search"></span><input class="input" type="search" aria-label="Search products" placeholder="Search products…"></label>
+              <select class="select" aria-label="Sort products"><option>Popular</option><option>Newest</option><option>Lowest price</option></select>
+              <button class="btn btn-outline btn-sm filter-button"><span class="icon-sm" data-icon="filter"></span> Filters</button>
+            </div>
           </div>
-          <div class="right">
-            <button class="btn btn-ghost btn-sm"><span class="icon-sm" data-icon="sliders"></span> Columns</button>
-            <button class="btn btn-outline btn-sm"><span class="icon-sm" data-icon="download"></span> Export CSV</button>
+
+          <div class="product-grid">
+            <article class="product-card">
+              <div class="product-art art-tee"><span class="art-label">ESSENTIAL</span><div class="mock-tee">T</div></div>
+              <div class="product-card-body"><div class="product-meta"><span class="badge green">Bestseller</span><span class="muted tiny">Apparel</span></div><h3>Unisex heavyweight tee</h3><p class="muted small">From <strong class="price">$12.48</strong> · 24 colors</p><button class="btn btn-primary btn-block btn-sm" onclick="alert('Opening Unisex heavyweight tee.')">Start designing <span class="icon-sm" data-icon="arrow_right"></span></button></div>
+            </article>
+            <article class="product-card">
+              <div class="product-art art-hoodie"><span class="art-label">NEW</span><div class="mock-hoodie">H</div></div>
+              <div class="product-card-body"><div class="product-meta"><span class="badge outline">Premium</span><span class="muted tiny">Apparel</span></div><h3>Heavyweight pullover hoodie</h3><p class="muted small">From <strong class="price">$24.36</strong> · 18 colors</p><button class="btn btn-primary btn-block btn-sm" onclick="alert('Opening Heavyweight pullover hoodie.')">Start designing <span class="icon-sm" data-icon="arrow_right"></span></button></div>
+            </article>
+            <article class="product-card">
+              <div class="product-art art-mug"><span class="art-label">POPULAR</span><div class="mock-mug">☕</div></div>
+              <div class="product-card-body"><div class="product-meta"><span class="badge green">Bestseller</span><span class="muted tiny">Home &amp; living</span></div><h3>Glossy ceramic mug</h3><p class="muted small">From <strong class="price">$6.62</strong> · 6 sizes</p><button class="btn btn-primary btn-block btn-sm" onclick="alert('Opening Glossy ceramic mug.')">Start designing <span class="icon-sm" data-icon="arrow_right"></span></button></div>
+            </article>
+            <article class="product-card">
+              <div class="product-art art-tote"><span class="art-label">ECO</span><div class="mock-tote">N</div></div>
+              <div class="product-card-body"><div class="product-meta"><span class="badge green">Eco-friendly</span><span class="muted tiny">Accessories</span></div><h3>Organic cotton tote bag</h3><p class="muted small">From <strong class="price">$11.09</strong> · 4 colors</p><button class="btn btn-primary btn-block btn-sm" onclick="alert('Opening Organic cotton tote bag.')">Start designing <span class="icon-sm" data-icon="arrow_right"></span></button></div>
+            </article>
+            <article class="product-card">
+              <div class="product-art art-cap"><span class="art-label">POPULAR</span><div class="mock-cap">C</div></div>
+              <div class="product-card-body"><div class="product-meta"><span class="badge outline">Embroidered</span><span class="muted tiny">Accessories</span></div><h3>Classic dad hat</h3><p class="muted small">From <strong class="price">$15.21</strong> · 12 colors</p><button class="btn btn-primary btn-block btn-sm" onclick="alert('Opening Classic dad hat.')">Start designing <span class="icon-sm" data-icon="arrow_right"></span></button></div>
+            </article>
+            <article class="product-card">
+              <div class="product-art art-poster"><span class="art-label">NEW</span><div class="mock-poster">A3</div></div>
+              <div class="product-card-body"><div class="product-meta"><span class="badge outline">Matte finish</span><span class="muted tiny">Paper products</span></div><h3>Premium matte poster</h3><p class="muted small">From <strong class="price">$8.40</strong> · 5 sizes</p><button class="btn btn-primary btn-block btn-sm" onclick="alert('Opening Premium matte poster.')">Start designing <span class="icon-sm" data-icon="arrow_right"></span></button></div>
+            </article>
           </div>
-        </div>
-
-        <div class="table-wrap" style="border:none; box-shadow:none; border-radius:0">
-          <table class="tbl">
-            <thead>
-              <tr>
-                <th style="width:34px"><input type="checkbox"></th>
-                <th>Product</th>
-                <th>Channel</th>
-                <th>Variants</th>
-                <th>Source status</th>
-                <th>Mapping</th>
-                <th>Synced</th>
-                <th class="right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="clickable" onclick="location.href='mapping.html'">
-                <td><input type="checkbox"></td>
-                <td>
-                  <div class="cell-title">
-                    <span class="thumb" style="background:oklch(0.95 0.03 250); color:oklch(0.5 0.2 250)">W</span>
-                    <span class="grow">
-                      <div class="t">Waves Tee — Black</div>
-                      <div class="sub mono">WK-100-BLK</div>
-                    </span>
-                  </div>
-                </td>
-                <td><span class="badge outline">Shopify</span></td>
-                <td>3</td>
-                <td><span class="badge green"><span class="dot"></span>Active</span></td>
-                <td><span class="badge green status-pill">Mapped</span></td>
-                <td class="sub nowrap">22 min ago</td>
-                <td>
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="clickable" onclick="location.href='mapping.html'">
-                <td><input type="checkbox"></td>
-                <td>
-                  <div class="cell-title">
-                    <span class="thumb" style="background:oklch(0.95 0.04 85); color:oklch(0.55 0.16 70)">H</span>
-                    <span class="grow">
-                      <div class="t">Harbor Hoodie — Charcoal</div>
-                      <div class="sub mono">HB-220-CHR</div>
-                    </span>
-                  </div>
-                </td>
-                <td><span class="badge outline">Etsy</span></td>
-                <td>5</td>
-                <td><span class="badge green"><span class="dot"></span>Active</span></td>
-                <td><span class="badge amber status-pill">Needs mapping</span></td>
-                <td class="sub nowrap">26 min ago</td>
-                <td>
-                  <div class="row-actions">
-                    <a class="btn btn-soft btn-sm" href="mapping.html">Map</a>
-                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="clickable" onclick="location.href='mapping.html'">
-                <td><input type="checkbox"></td>
-                <td>
-                  <div class="cell-title">
-                    <span class="thumb" style="background:oklch(0.95 0.03 340); color:oklch(0.5 0.2 320)">C</span>
-                    <span class="grow">
-                      <div class="t">Cliff Beanie — Multi</div>
-                      <div class="sub mono">CB-115-M</div>
-                    </span>
-                  </div>
-                </td>
-                <td><span class="badge outline">WooCommerce</span></td>
-                <td>2</td>
-                <td><span class="badge green"><span class="dot"></span>Active</span></td>
-                <td><span class="badge green status-pill">Mapped</span></td>
-                <td class="sub nowrap">52 min ago</td>
-                <td>
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="clickable" onclick="location.href='mapping.html'">
-                <td><input type="checkbox"></td>
-                <td>
-                  <div class="cell-title">
-                    <span class="thumb" style="background:oklch(0.94 0.03 140); color:oklch(0.5 0.18 160)">P</span>
-                    <span class="grow">
-                      <div class="t">Portland Tote — Natural</div>
-                      <div class="sub mono">PT-330-NAT</div>
-                    </span>
-                  </div>
-                </td>
-                <td><span class="badge outline">Shopify</span></td>
-                <td>1</td>
-                <td><span class="badge green"><span class="dot"></span>Active</span></td>
-                <td><span class="badge amber status-pill">Needs mapping</span></td>
-                <td class="sub nowrap">1 h ago</td>
-                <td>
-                  <div class="row-actions">
-                    <a class="btn btn-soft btn-sm" href="mapping.html">Map</a>
-                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="clickable" onclick="location.href='mapping.html'">
-                <td><input type="checkbox"></td>
-                <td>
-                  <div class="cell-title">
-                    <span class="thumb" style="background:oklch(0.95 0.02 0); color:oklch(0.45 0.02 0)">S</span>
-                    <span class="grow">
-                      <div class="t">Summit Crew — Navy</div>
-                      <div class="sub mono">SM-410-NVY</div>
-                    </span>
-                  </div>
-                </td>
-                <td><span class="badge outline">Etsy</span></td>
-                <td>4</td>
-                <td><span class="badge amber"><span class="dot"></span>Draft</span></td>
-                <td><span class="badge green status-pill">Mapped</span></td>
-                <td class="sub nowrap">2 h ago</td>
-                <td>
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="clickable" onclick="location.href='mapping.html'">
-                <td><input type="checkbox"></td>
-                <td>
-                  <div class="cell-title">
-                    <span class="thumb" style="background:oklch(0.95 0.03 200); color:oklch(0.5 0.14 220)">R</span>
-                    <span class="grow">
-                      <div class="t">Rainier Cap — Black</div>
-                      <div class="sub mono">RN-510-BLK</div>
-                    </span>
-                  </div>
-                </td>
-                <td><span class="badge outline">Shopify</span></td>
-                <td>2</td>
-                <td><span class="badge green"><span class="dot"></span>Active</span></td>
-                <td><span class="badge green status-pill">Mapped</span></td>
-                <td class="sub nowrap">3 h ago</td>
-                <td>
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation()"><span class="icon" data-icon="dots"></span></button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-foot">
-          <span>Showing 6 of 128 products</span>
-          <nav class="pagination">
-            <button class="page-btn" disabled><span class="icon-sm" data-icon="chevron_left"></span></button>
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">…</button>
-            <button class="page-btn">22</button>
-            <button class="page-btn"><span class="icon-sm" data-icon="chevron_right"></span></button>
-          </nav>
-        </div>
+          <div class="products-pagination"><span class="small muted">Showing 6 of 128 products</span><div class="pagination"><button class="page-btn" disabled><span class="icon-sm" data-icon="chevron_left"></span></button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn">…</button><button class="page-btn">22</button><button class="page-btn"><span class="icon-sm" data-icon="chevron_right"></span></button></div></div>
+        </section>
       </div>
 
     </div>
